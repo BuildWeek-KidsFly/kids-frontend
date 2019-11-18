@@ -4,7 +4,7 @@ import axios from 'axios';
 export const axiosWithAuth = ()=>{
     axios.create({
         headers:{
-            authorization: sessionStorage.getItem("token")
+            authorization: localStorage.getItem("token")
         }
     })
 }
