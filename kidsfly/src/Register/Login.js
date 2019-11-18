@@ -22,10 +22,12 @@ const Login = ({ values, errors, touched, status }) => {
   return (
     <div className="login-form">
       <Form>
+          Enter Login
         <Field type="text" name="username" placeholder="Username" />
         {touched.username && errors.username && (
           <p className="errors">{errors.username}</p>
         )}
+        Enter Password
         <Field type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p className="errors">{errors.password}</p>}
         <button>Submit</button>
