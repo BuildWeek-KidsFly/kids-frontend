@@ -3,46 +3,30 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const Login = ({ values, errors, touched, status }) => {
+const Login = ( props ) => {
   // const Login = ({ errors, touched, values }) => {
   const [user, setUser] = useState({ email: "", password: "" });
-//   useEffect(() => {
-//     status && setUser(user => [...user, status]);
-//   }, [status]);
-
-//   const handleChange = event => {
-//     setUser({ ...user, [event.target.name]: event.target.value });
-//   };
-
-//   const handleSubmit = event => {
-//     event.preventDefault();
-//     console.log(user);
-//   };
-
+  
+  
   return (
     <div className="login-form">
-      <Form>
-          Enter Login
+      <Form onSubmit={props.handleSubmit}>
+          {!props.status ? <h1>Please enter login credentials</h1>: <h1>Authenticating...</h1>}
         <Field type="text" name="email" placeholder="Email" />
-        {touched.username && errors.username && (
-          <p className="errors">{errors.username}</p>
+        {props.touched.username && props.errors.username && (
+          <p className="errors">{props.errors.username}</p>
         )}
         Enter Password
         <Field type="password" name="password" placeholder="Password" />
-        {touched.password && errors.password && <p className="errors">{errors.password}</p>}
-        <button>Submit</button>
+        {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
+        <button type="submit">Submit</button>
       </Form>
-      {/* {user.map(user => (
-        <ul key={user.id}>
-          <li>Username: {user.username}</li>
-          <li>Password: {user.password}</li>
-        </ul>
-      ))} */}
     </div>
   );
 };
 
 const FormikLogin = withFormik({
+  
   mapPropsToValues({ email, password }) {
     return {
       email: email || "",
@@ -54,16 +38,25 @@ const FormikLogin = withFormik({
     password: Yup.string().required()
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, {setStatus, props}) {
+      
       console.log("from formik", values)
+      console.log("Formik props", props)
+
+      setStatus(true);
     axios
       .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/login", values)
       .then(res => {
         // setStatus(res.data);
         console.log(res);
         localStorage.setItem("token", res.data.token)
+        setStatus(false);
+        props.history.push("/dashboard")
       })
-      .catch(err => console.log(err.response))
+      .catch((err) => {
+        console.log(err.response)
+        setStatus(false)
+      })
       .finally(() => {
           console.log('From Local Storage', localStorage.getItem("token"))
       })
