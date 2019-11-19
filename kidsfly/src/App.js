@@ -6,6 +6,7 @@ import './App.css';
 import Login from "./Register/Login";
 import Dashboard from "./Components/Dashboard";
 import PrivateDash from "./PrivateRoutes/PrivateDash";
+import Landing from "./Components/Landing";
 
 import {Switch, Link, Route} from "react-router-dom";
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
+      
       <Switch>
         <PrivateDash path="/dashboard">
           <Route path="/dashboard" component={Dashboard}/>
@@ -23,6 +25,7 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route component={Login}/>
       </Switch> 
+      <Landing />
     </div>
   )
 }
