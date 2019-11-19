@@ -44,28 +44,28 @@ const ConnectionFormikLogin = withFormik({
   }),
 
   handleSubmit(values, {setStatus, props}) {
+    //replace below with 'connection' endpoint
       
       console.log("from formik", values)
       console.log("Formik props", props)
 
       setStatus(true);
-    axios
-      // .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/login", values)
-      //replace above with 'connection' endpoint
-      .then(res => {
-        // setStatus(res.data);
-        console.log(res);
-        localStorage.setItem("token", res.data.token)
-        setStatus(false);
-        props.history.push("/dashboard")
-      })
-      .catch((err) => {
-        console.log(err.response)
-        setStatus(false)
-      })
-      .finally(() => {
-          console.log('From Local Storage', localStorage.getItem("token"))
-      })
+    // axios
+    //   .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/login", values)
+    //   .then(res => {
+    //     setStatus(res.data);
+    //     console.log(res);
+    //     localStorage.setItem("token", res.data.token)
+    //     setStatus(false);
+    //     props.history.push("/dashboard")
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response)
+    //     setStatus(false)
+    //   })
+    //   .finally(() => {
+    //       console.log('From Local Storage', localStorage.getItem("token"))
+    //   })
   }
 })(ConnectionLogin);
 

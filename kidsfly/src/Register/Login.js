@@ -30,7 +30,7 @@ const Login = ( props ) => {
   );
 };
 
-const FormikLogin = withFormik({
+const ConnectionFormLogin = withFormik({
   
   mapPropsToValues({ email, password }) {
     return {
@@ -68,4 +68,4 @@ const FormikLogin = withFormik({
   }
 })(Login);
 
-export default FormikLogin;
+export default ConnectionFormLogin;
