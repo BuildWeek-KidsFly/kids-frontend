@@ -7,9 +7,17 @@ export const TripProvider = props=>{
     //Honestly think Trips should just be an array since out travelers and careTakers are going to loop through them to create their dashboards
     const [trips, setTrips] = useState([]);
 
+    const [complete, setComplete] = useState(false);
+    const [traveler, setTraveler] = useState([
+            "yeet",
+            "yate"
+    ]);
+
+
+
     return(
         
-        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips}}>
+        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips, complete, setComplete, traveler, setTraveler}}>
             {props.children}
         </TripContext.Provider>
     );
