@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 
@@ -42,7 +43,7 @@ const ParentReg = ({ errors, touched, values, status }) => {
 
         <button type='submit'>Submit</button>
       </Form>
-
+      <h2>Want to register to be a Connection?</h2>
     </div>
   );
 };
