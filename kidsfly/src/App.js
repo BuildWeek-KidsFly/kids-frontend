@@ -1,4 +1,8 @@
 import React from 'react';
+
+import Login from "./Register/Login";
+
+
 import './App.css';
 import Login from "./Register/Login";
 
@@ -11,5 +15,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
