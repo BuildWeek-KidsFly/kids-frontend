@@ -8,16 +8,19 @@ export const TripProvider = props=>{
     const [trips, setTrips] = useState([]);
 
     const [complete, setComplete] = useState(false);
-    const [traveler, setTraveler] = useState([
-            "yeet",
-            "yate"
-    ]);
+    const [traveler, setTraveler] = useState({
+        id:""
+    });
+
+    const setId = (id)=>{
+        setTraveler({...traveler, id: id })
+    }
 
 
 
     return(
         
-        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips, complete, setComplete, traveler, setTraveler}}>
+        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips, complete, setComplete, traveler, setTraveler, setId}}>
             {props.children}
         </TripContext.Provider>
     );

@@ -3,11 +3,12 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+
 const Login = ( props ) => {
   // const Login = ({ errors, touched, values }) => {
   const [user, setUser] = useState({ email: "", password: "" });
   
-  
+  console.log("login", props)
   return (
     <div className="login-form">
       <Form onSubmit={props.handleSubmit}>
@@ -45,8 +46,11 @@ const ConnectionFormLogin = withFormik({
 
   handleSubmit(values, {setStatus, props}) {
       
+    
+
       console.log("from formik", values)
       console.log("Formik props", props)
+     
 
       setStatus(true);
     axios
@@ -56,6 +60,7 @@ const ConnectionFormLogin = withFormik({
         console.log(res);
         localStorage.setItem("token", res.data.token)
         setStatus(false);
+        props.YEET(res.data.id)
         props.history.push("/dashboard")
       })
       .catch((err) => {

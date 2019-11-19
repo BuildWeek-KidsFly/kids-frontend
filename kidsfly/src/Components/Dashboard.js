@@ -1,25 +1,30 @@
 import React from 'react';
 import {TripContext} from "../Context/TripContext";
+import axios from 'axios';
+import axiosWithAuth from "../Utils/Axios";
 const Dashboard = ()=>{
 
     const {isLoggedIn, traveler, setTraveler} = React.useContext(TripContext);
 
-    const handlesub = (e)=>{
-        e.preventDefault();
-        setTraveler([...traveler, "test"])
-    }
+    console.log("traveler id", traveler);
 
-    if(isLoggedIn){
+    // React.useEffect(()=>{
+    //     axiosWithAuth().get("https://kidsfly-be-dakotah.herokuapp.com/api/users/")
+    //         .then((res)=>{
+    //             console.log(res)
+    //         })
+    //         .catch((err)=>{
+    //             console.log(err)
+    //         })
+    // },[])
+
         return(
             <div>
                 <h1>Welcome customer, to the KidsFly dashboard</h1>
-                {traveler.map((y)=>(
-                    <p>{y}</p>
-                ))}
-                <button onClick={handlesub}>add me</button>
+
             </div>
         );
-    }
+    
 
     
 }
