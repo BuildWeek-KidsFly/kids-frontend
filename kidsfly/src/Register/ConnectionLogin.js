@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const Login = ( props ) => {
+const ConnectionLogin = ( props ) => {
   // const Login = ({ errors, touched, values }) => {
   const [user, setUser] = useState({ email: "", password: "" });
   
@@ -30,7 +30,7 @@ const Login = ( props ) => {
   );
 };
 
-const FormikLogin = withFormik({
+const ConnectionFormikLogin = withFormik({
   
   mapPropsToValues({ email, password }) {
     return {
@@ -50,7 +50,8 @@ const FormikLogin = withFormik({
 
       setStatus(true);
     axios
-      .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/login", values)
+      // .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/login", values)
+      //replace above with 'connection' endpoint
       .then(res => {
         // setStatus(res.data);
         console.log(res);
@@ -66,6 +67,6 @@ const FormikLogin = withFormik({
           console.log('From Local Storage', localStorage.getItem("token"))
       })
   }
-})(Login);
+})(ConnectionLogin);
 
-export default FormikLogin;
+export default ConnectionFormikLogin;
