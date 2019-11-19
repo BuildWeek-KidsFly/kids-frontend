@@ -22,13 +22,18 @@
 }
 
 .Nav{
-  border: 1px solid red;
+  background: #323232;
   display: flex;
   flex-direction: row-reverse;
 }
 
+a{
+  color: white;
+  margin: 3% 0 ;
+}
+
 .Header{
-  border: 1px solid blue;
+  background: #323232;
   width: 40%;
   display: flex;
   justify-content: space-around;
