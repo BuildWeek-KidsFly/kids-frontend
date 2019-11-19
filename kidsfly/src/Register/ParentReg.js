@@ -5,41 +5,48 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 
 
-const ParentReg = ({ errors, touched, values, status }) => {
+const ParentReg = (props) => {
 
   const [travelers, setTravelers] = useState({ email: '', password: '', home_airport: '' });
 
   return (
     <div>
-      <h1>KidsFly Parent Registration</h1>
+      
       <Form>
+      {!props.status ? <h1>Please enter Register credentials</h1>: <h1>Authenticating...</h1>}
+      <div>
+        <label htmlFor="email">Email:</label>
         <Field
           type='text'
           name='email'
           placeholder='Email'
         />
-        {touched.name && errors.email && (
-          <p className='error'>{errors.email}</p>
+        {props.touched.name && props.errors.email && (
+          <p className='error'>{props.errors.email}</p>
         )}
-
-        <Field
+      </div>
+      <div>
+          <label htmlFor="password">Password:</label>
+          <Field
           type='password'
           name='password'
           placeholder='Password'
-        />
-        {touched.name && errors.password && (
-          <p className='error'>{errors.password}</p>
-        )}
-
+          />
+          {props.touched.name && props.errors.password && (
+            <p className='error'>{props.errors.password}</p>
+          )}
+      </div>
+      <div>
+        <label htmlFor="home_airport">Home Airport:</label>
         <Field
           type='text'
           name='home_airport'
           placeholder='Home Airport'
-        />
-        {touched.name && errors.home_airport && (
-          <p className='error'>{errors.home_airport}</p>
-        )}
-
+          />
+          {props.touched.name && props.errors.home_airport && (
+            <p className='error'>{props.errors.home_airport}</p>
+          )}
+      </div>
         <button type='submit'>Submit</button>
       </Form>
 
@@ -63,14 +70,20 @@ const FormikForms = withFormik({
 
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, {setStatus, props}) {
+
     console.log(values)
+    setStatus(true);
     axios.post('https://kidsfly-be-dakotah.herokuapp.com/api/auth/register', values)
       .then(response => {
-
+        setStatus(false);
         console.log(response)
+        props.history.push("/login")
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        setStatus(false);
+      })
   }
 
 

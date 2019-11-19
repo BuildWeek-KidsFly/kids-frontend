@@ -6,6 +6,8 @@ const NavBar = ()=>{
             <header className = "Header">
                 <Link to="/signup">Sing Up</Link>
                 <Link to="/login">Login</Link>
+                <Link to="/">Home</Link>
+                <Link to="/dashboard">Dashboard</Link>
             </header>
         </div>
     );
