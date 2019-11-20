@@ -22,18 +22,18 @@
 }
 
 .Nav{
-  background: #323232;
+  background: #2683f9;
   display: flex;
   flex-direction: row-reverse;
 }
 
 a{
-  color: white;
+  color:  #ffcc00;
   margin: 3% 0 ;
 }
 
 .Header{
-  background: #323232;
+  background: #2683f9;
   width: 40%;
   display: flex;
   justify-content: space-around;
