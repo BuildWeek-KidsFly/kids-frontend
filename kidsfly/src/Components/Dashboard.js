@@ -21,6 +21,14 @@ const Dashboard = ()=>{
             .catch((err)=>{
                 console.log(err)
             })
+        axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${user.id}/trips`)
+            .then((res)=>{
+                console.log("from trips", res)
+
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
     },[])
 
 
@@ -30,8 +38,8 @@ const Dashboard = ()=>{
         );
     }
 
-    console.log("localuser", user);
-    console.log("localStorage",localStorage.getItem('user'));
+    // console.log("localuser", user);
+    // console.log("localStorage",localStorage.getItem('user'));
 
         return(
             <div>
@@ -44,6 +52,7 @@ const Dashboard = ()=>{
 
                     </div>
                     <div className="trips">
+                        <h1>Trips</h1>
 
                     </div>
                 </div>
