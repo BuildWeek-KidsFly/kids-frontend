@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import myImage from "../../src/img/airplanes.jpg";
 
@@ -8,7 +9,9 @@ const Landing = (props) => {
         background: white;
         height: 100vh;
         width: 100%;
-        border: solid black 1px;
+        max-width: 1200px;
+        margin: 0 auto;
+        
     `;
 
     const Banner = styled.div`
@@ -31,7 +34,7 @@ const Landing = (props) => {
     const ContainerParent = styled.div`
         background: #5963DD;
         width: 35%;
-        height: auto;
+        height: 220px;
         border: solid black 1px;
         border-radius: 20px;
         margin-top: 5%;
@@ -50,6 +53,16 @@ const Landing = (props) => {
         color: white;
     `;
 
+    const TextContain = styled.div`
+        max-height: 70px;
+        max-width: 330px;
+    `;
+
+    const Paragraph = styled.p`
+        font-size: 1rem;
+    
+    `;
+
     const Button = styled.button`
         background: yellow;
         border-radius: 20px;
@@ -57,6 +70,7 @@ const Landing = (props) => {
         width: 150px;
         margin: 3%;
     `;
+
     
     return (
 
@@ -65,16 +79,16 @@ const Landing = (props) => {
             <Container>
                 <ContainerParent>
                     <h2>If You're A Parent!</h2>
-                    <div>
-                        <p>Here at KidsFly, we want your travel experience to be First Class! Click below to Register as a KidsFly Traveller today!</p>
-                    </div>
+                    <TextContain>
+                        <Paragraph>Here at KidsFly, we want your travel experience to be First Class! Click below to Register as a KidsFly Traveller today!</Paragraph>
+                    </TextContain>
                     <Button>Parent Click Here!</Button>
                 </ContainerParent>
                 <ContainerConnect>
                     <h2>If You're A Team Member!</h2>
-                    <div>
+                    <TextContain>
                         <p>Here at KidsFly, we only have the best Connection Members! Click below to Register as a KidsFly Team Member today!</p>
-                    </div>
+                    </TextContain>
                     <Button>Team Member Click Here!</Button>
                 </ContainerConnect>
             </Container>
