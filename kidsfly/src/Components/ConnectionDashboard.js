@@ -4,15 +4,16 @@ import axios from 'axios';
 import axiosWithAuth from "../Utils/Axios";
 import {Link} from "react-router-dom";
 
-const Dashboard = ()=>{
+const ConnectionDashboard = ()=>{
 
     const {isLoggedIn, traveler, setTraveler, user, setUser, trips, setTrips} = React.useContext(TripContext);
 
     console.log("traveler id:",traveler.id)
     console.log("user id:", user.id)
+    
 
     React.useEffect(()=>{
-        axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}`)
+        axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/connections/${traveler.id}`)
             .then((res)=>{
                 console.log(res)
                 if(!localStorage.getItem("user")){
@@ -29,7 +30,7 @@ const Dashboard = ()=>{
     },[])
 
     React.useEffect(()=>{
-        axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}/trips`)
+        axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/connections/${traveler.id}/trips`)
             .then((res)=>{
                 console.log(res)
                 if(!localStorage.getItem("trips")){
@@ -39,6 +40,9 @@ const Dashboard = ()=>{
             })
             .catch((err)=>{
                 console.log(err)
+            })
+            .finally(()=>{
+                console.log("trips", trips)
             })
     },[])
 
@@ -51,7 +55,7 @@ const Dashboard = ()=>{
 
         return(
             <div>
-                <h1>Welcome customer, to the KidsFly dashboard</h1>
+                <h1>Welcome customer, to the Connection dashboard</h1>
                 <div className="dashboard">
                     <div className = "user">
                         <h2>{user.name}</h2>
@@ -61,17 +65,24 @@ const Dashboard = ()=>{
                     </div>
                     <div className="trips">
                         <h1>Your Flights</h1>
-                        {trips.map((t)=>(
-                            <div>
-                                <h2>{t.airline}</h2>
-                                <h4>{t.airport_name}</h4>
-                                <h4>{t.departure_time}</h4>
-                                <h4>{t.flight_number}</h4>
-                                <h4>{t.number_of_children}</h4>
-                                <h4>{t.number_of_items}</h4>
-                                <h4>{t.special}</h4>
-                            </div>
-                        ))}
+                        {
+                            !trips.length > 0 ?
+                            
+                            <h1>Looks like you havent signed up for any trips</h1>
+                            :
+                            trips.map((t)=>(
+                                <div>
+                                    <h2>{t.airline}</h2>
+                                    <h4>{t.airport_name}</h4>
+                                    <h4>{t.departure_time}</h4>
+                                    <h4>{t.flight_number}</h4>
+                                    <h4>{t.number_of_children}</h4>
+                                    <h4>{t.number_of_items}</h4>
+                                    <h4>{t.special}</h4>
+                                </div>
+                            ))
+
+                        }
                     </div>
                         
                 </div>
@@ -83,4 +94,4 @@ const Dashboard = ()=>{
     
 }
 
-export default Dashboard;
+export default ConnectionDashboard;

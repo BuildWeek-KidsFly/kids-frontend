@@ -117,7 +117,8 @@ const ConnectionFormikLogin = withFormik({
         console.log(res);
         localStorage.setItem("token", res.data.token)
         setStatus(false);
-        props.history.push("/dashboard")
+        props.YEET(res.data.id)
+        props.history.push("/connectdashboard")
       })
       .catch((err) => {
         console.log(err.response)

@@ -1,10 +1,12 @@
 import React from 'react';
 
 import {Link} from "react-router-dom";
-const NavBar = ()=>{
+const NavBar = (props)=>{
+
     const clear = () => {
         window.location.reload();
         localStorage.clear();
+        props.history.push("/");
     }
    
 
@@ -17,6 +19,7 @@ const NavBar = ()=>{
                 <Link to="/connectionLog">Connection Login</Link>
                 <Link to="/connectionReg">Connection Registration</Link>
                 <Link to="/dashboard">Dashboard</Link>
+                <Link to="/connectdashboard">Connection Dashboard</Link>
                 <button onClick={clear}>Log out</button>
             </header>
         </div>
