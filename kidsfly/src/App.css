@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: row-reverse;
   
-  
 }
 
 a{
@@ -37,11 +36,12 @@ a{
 
 .Header{
   background: #091d86;
-  height: 10vh;
+  height: 60px;
   width: 90%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  white-space: nowrap;
 }
 
 .dashboard{
@@ -59,3 +59,11 @@ a{
   width: 60%;
   border: 1px solid black;
 }
+
+/* .linkStyle {
+  cursor: pointer;
+}
+
+.linkStyle:hover {
+  color: black;
+} */
