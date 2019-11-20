@@ -4,7 +4,7 @@ const NavBar = ()=>{
 
     const clear = () => {
         window.location.reload();
-        localStorage.removeItem('token');
+        localStorage.clear();
     }
    
     return(

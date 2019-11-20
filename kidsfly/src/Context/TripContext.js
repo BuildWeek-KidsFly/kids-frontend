@@ -8,9 +8,11 @@ export const TripProvider = props=>{
     const [trips, setTrips] = useState([]);
 
     const [complete, setComplete] = useState(false);
-    const [traveler, setTraveler] = useState({
-        id:""
-    });
+
+    //traveler just holds the id
+    const [traveler, setTraveler] = useState({});
+    //user dynamically holds the connection or parent
+    const [user, setUser] = useState({});
 
     const setId = (id)=>{
         setTraveler({...traveler, id: id })
@@ -20,7 +22,7 @@ export const TripProvider = props=>{
 
     return(
         
-        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips, complete, setComplete, traveler, setTraveler, setId}}>
+        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips, complete, setComplete, traveler, setTraveler, setId, user, setUser}}>
             {props.children}
         </TripContext.Provider>
     );

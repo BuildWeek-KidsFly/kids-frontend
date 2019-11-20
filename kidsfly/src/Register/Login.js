@@ -5,10 +5,9 @@ import axios from "axios";
 
 
 const Login = ( props ) => {
-  // const Login = ({ errors, touched, values }) => {
+  
   const [user, setUser] = useState({ email: "", password: "" });
   
-  console.log("login", props)
   return (
     <div className="login-form">
       <Form onSubmit={props.handleSubmit}>
@@ -48,8 +47,6 @@ const ConnectionFormLogin = withFormik({
       
     
 
-      console.log("from formik", values)
-      console.log("Formik props", props)
      
 
       setStatus(true);

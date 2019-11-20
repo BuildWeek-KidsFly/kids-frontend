@@ -38,3 +38,19 @@ a{
   display: flex;
   justify-content: space-around;
 }
+
+.dashboard{
+  display: flex;
+  justify-content: space-around;
+}
+
+.user{
+  width: 30%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.trips{
+  width: 60%;
+  border: 1px solid black;
+}
