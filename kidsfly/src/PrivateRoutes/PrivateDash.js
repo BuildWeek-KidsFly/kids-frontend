@@ -2,7 +2,6 @@ import React from 'react';
 import {Route, Redirect} from "react-router-dom";
 
 function isAuth(){
-    console.log("runs")
     return localStorage.getItem("token") ? true : false;
     
 }

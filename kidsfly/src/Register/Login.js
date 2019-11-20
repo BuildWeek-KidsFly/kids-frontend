@@ -7,7 +7,13 @@ import styled from 'styled-components';
 
 
 
+
 const Login = ( props ) => {
+
+  
+  const [user, setUser] = useState({ email: "", password: "" });
+  
+
 const Container = styled.div`
 display: flex;
 justify-content: center;
@@ -68,6 +74,7 @@ const Login = (props) => {
   const [user, setUser] = useState({ email: "", password: "" });
 
 
+
   return (
     <Container>
       <Card>
@@ -111,10 +118,18 @@ const ConnectionFormLogin = withFormik({
     password: Yup.string().required()
   }),
 
+
+  handleSubmit(values, {setStatus, props}) {
+      
+    
+
+     
+
   handleSubmit(values, { setStatus, props }) {
 
     console.log("from formik", values)
     console.log("Formik props", props)
+
 
     setStatus(true);
     axios
@@ -124,6 +139,7 @@ const ConnectionFormLogin = withFormik({
         console.log(res);
         localStorage.setItem("token", res.data.token)
         setStatus(false);
+        props.YEET(res.data.id)
         props.history.push("/dashboard")
       })
       .catch((err) => {
