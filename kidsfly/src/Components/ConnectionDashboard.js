@@ -67,8 +67,11 @@ const ConnectionDashboard = ()=>{
                         <h1>Your Flights</h1>
                         {
                             !trips.length > 0 ?
+                            <div>
+                                <h1>Looks like you havent signed up for any trips</h1>
+                                <Link to="/picktrip">PickTrip</Link>
+                            </div>
                             
-                            <h1>Looks like you havent signed up for any trips</h1>
                             :
                             trips.map((t)=>(
                                 <div>

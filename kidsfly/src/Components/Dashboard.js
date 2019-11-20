@@ -8,8 +8,8 @@ const Dashboard = ()=>{
 
     const {isLoggedIn, traveler, setTraveler, user, setUser, trips, setTrips} = React.useContext(TripContext);
 
-    console.log("traveler id:",traveler.id)
-    console.log("user id:", user.id)
+    // console.log("traveler id:",traveler.id)
+    // console.log("user id:", user.id)
 
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}`)
@@ -24,6 +24,9 @@ const Dashboard = ()=>{
             .catch((err)=>{
                 console.log(err)
             })
+            .finally(()=>{
+                console.log("full", user)
+            })
             
         
     },[])
@@ -31,7 +34,7 @@ const Dashboard = ()=>{
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}/trips`)
             .then((res)=>{
-                console.log(res)
+                // console.log(res)
                 if(!localStorage.getItem("trips")){
                     localStorage.setItem('trips',JSON.stringify(res.data))
                 }
@@ -51,9 +54,50 @@ const Dashboard = ()=>{
 
         return(
             <div>
-                <h1>Welcome customer, to the KidsFly dashboard</h1>
+                {
+                
+                    !user.phone ?
+                    <div>
+                        <h1>Looks like your stuff isn't there</h1>
+                        
+                    </div>
+                   
+                    :
+                    <div>
+                        <h1>Welcome customer, to your kidsfly dashboard</h1>
+                            <div className="dashboard">
+                        <div className = "user">
+                            {console.log("full", user)}
+                            <h2>{user.name}</h2>
+                            <h4>{user.home_airport}</h4>
+                            <h4>{user.phone}</h4>
+                            <p>{user.id}</p>
+                        </div>
+                        <div className="trips">
+                            <h1>Your Flights</h1>
+                            {trips.map((t)=>(
+                                <div>
+                                    <h2>{t.airline}</h2>
+                                    <h4>{t.airport_name}</h4>
+                                    <h4>{t.departure_time}</h4>
+                                    <h4>{t.flight_number}</h4>
+                                    <h4>{t.number_of_children}</h4>
+                                    <h4>{t.number_of_items}</h4>
+                                    <h4>{t.special}</h4>
+                                </div>
+                            ))}
+                        </div>
+                            
+                    </div>
+                    <Link to="/addTrip">Add Trip</Link>
+                    </div>
+                    
+                    
+                }
+                {/* <h1>Welcome customer, to your KidsFly dashboard</h1>
                 <div className="dashboard">
                     <div className = "user">
+                        {console.log("full", user)}
                         <h2>{user.name}</h2>
                         <h4>{user.home_airport}</h4>
                         <h4>{user.phone}</h4>
@@ -75,7 +119,7 @@ const Dashboard = ()=>{
                     </div>
                         
                 </div>
-                <Link to="/addTrip">Add Trip</Link>
+                <Link to="/addTrip">Add Trip</Link> */}
             </div>
         );
     

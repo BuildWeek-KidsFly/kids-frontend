@@ -13,6 +13,7 @@ import ConnectionFormikLogin from "./Register/ConnectionLogin";
 import CRegFormikForms from "./Register/ConnectionReg";
 import ConnectionDashboard from "./Components/ConnectionDashboard";
 import PrivateConnectDash from "./PrivateRoutes/PrivateConnectDash";
+import Pick from "./Components/PickTrip";
 
 
 import { Switch, Link, Route } from "react-router-dom";
@@ -34,6 +35,7 @@ function App() {
         <PrivateConnectDash path="/connectdashboard">
           <Route path="/connectdashboard" component={ConnectionDashboard} />
         </PrivateConnectDash>
+        <Route path="/picktrip" component={Pick}/>
         <Route exact path="/connectionReg" render={(props)=> <CRegFormikForms {...props} YEET={setId}/>}/>
         <Route path="/connectionLog" render={(props)=> <ConnectionFormikLogin {...props} YEET={setId}/>}/>
         <Route path="/signup" render={(props)=><FormikForms {...props} YEET={setId}/>}/>
