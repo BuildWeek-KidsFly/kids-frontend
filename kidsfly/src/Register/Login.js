@@ -70,7 +70,7 @@ const Login = (props) => {
   // const Login = ({ errors, touched, values }) => {
   const [user, setUser] = useState({ email: "", password: "" });
 
-console.log("parent Login")
+
 
   return (
     <Container>

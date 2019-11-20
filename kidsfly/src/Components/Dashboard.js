@@ -6,10 +6,12 @@ import {Link} from "react-router-dom";
 
 const Dashboard = ()=>{
 
-    const {isLoggedIn, traveler, setTraveler, user, setUser, trips, setTrips} = React.useContext(TripContext);
+    const { traveler,  user, setUser, trips, setTrips} = React.useContext(TripContext);
 
-    // console.log("traveler id:",traveler.id)
-    // console.log("user id:", user.id)
+    console.log("traveler id:",traveler.id)
+    console.log("user id:", user.id)
+
+    
 
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}`)
@@ -24,9 +26,7 @@ const Dashboard = ()=>{
             .catch((err)=>{
                 console.log(err)
             })
-            .finally(()=>{
-                console.log("full", user)
-            })
+           
             
         
     },[])
@@ -43,23 +43,28 @@ const Dashboard = ()=>{
             .catch((err)=>{
                 console.log(err)
             })
+            .finally(()=>{
+                
+            })
     },[])
 
 
-    if(user === null){
-        return(
-            <h1>Loading...</h1>
-        );
-    }
+    // if(user.phone===null){
+    //     console.log("condition")
+    //     return(
+    //         <h1>Loading...</h1>
+    //     );
+    // }
 
         return(
             <div>
+                
                 {
                 
                     !user.phone ?
                     <div>
-                        <h1>Looks like your stuff isn't there</h1>
-                        
+                        <h1>Looks like your account isn't complete, follow the link to add more info</h1>
+                        <Link to="/completeparent">Complete My Account</Link>
                     </div>
                    
                     :

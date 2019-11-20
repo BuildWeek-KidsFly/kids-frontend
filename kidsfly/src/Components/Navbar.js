@@ -1,11 +1,14 @@
 import React from 'react';
 
 import {Link} from "react-router-dom";
+
 const NavBar = (props)=>{
 
+    
     const clear = () => {
         window.location.reload();
         localStorage.clear();
+        
         props.history.push("/");
     }
    
