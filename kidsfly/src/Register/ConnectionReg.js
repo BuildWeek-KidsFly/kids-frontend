@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
+import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 
 const Container = styled.div`
 display: flex;
 justify-content: center;
-padding-top: 60px;
+padding-top: 80px;
 background-image: url('https://images.unsplash.com/photo-1415959588285-66bbf7450d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60');
-background-color: black;
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
-margin-left: 60px;
-margin-right:60px;
-
+height: 100%;
+margin-left: 100px;
+margin-right: 100px;
 `;
 
 const Card = styled.div`
-background: #999999;
+background: #091d86;
 width: 400px;
 max-height: 400px;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
-margin-bottom: 20px;
-box-shadow: 5px 5px #666666 ;
-border: 2px solid white;
+margin-bottom: 80px;
+box-shadow: 5px 5px black ;
+border: 2px solid #999999;
 color: #ffcc00;
 `;
 
@@ -49,6 +49,7 @@ const Button = styled.button`
   cursor: pointer;
 
 `;
+
 
 
 const ConnectionReg = (props) => {
@@ -88,7 +89,7 @@ const ConnectionReg = (props) => {
               )}
             </Box>
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="home_airport">Home Airport</label>
             <Box>
               <Field
@@ -100,8 +101,9 @@ const ConnectionReg = (props) => {
                 <p className='error'>{props.errors.home_airport}</p>
               )}
             </Box>
-          </div>
-          <button type='submit'>Submit</button>
+          </div> */}
+          <Button type='submit'>Submit</Button>
+          <p>Already have an Account? <NavLink to='/connectionLog'>Click Here</NavLink></p>
         </Form>
 
       </Card>
