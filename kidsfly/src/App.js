@@ -8,6 +8,7 @@ import Dashboard from "./Components/Dashboard";
 import PrivateDash from "./PrivateRoutes/PrivateDash";
 import {TripContext} from "./Context/TripContext";
 import Landing from "./Components/Landing";
+import AddTrip from "./Components/AddTrip";
 
 import { Switch, Link, Route } from "react-router-dom";
 
@@ -20,25 +21,24 @@ function App() {
     <div className="App">
 
       <NavBar/>
-      
-
-      <NavBar />
 
       <Switch>
         <PrivateDash path="/dashboard">
           <Route path="/dashboard" component={Dashboard} />
         </PrivateDash>
-
         <Route path="/signup" component={FormikForms}/>
         <Route path="/login" render={(props)=> <Login {...props} YEET={setId}/>}/>
-        <Route component={Login}/>
+        <Route path="/addTrip" component={AddTrip}/>
+        <Route path="/"component={Landing}/>
+        <Route component={Landing}/>
       </Switch> 
-      <Landing />
+      {/* <Landing /> */}
+      {/* <Switch/>
 
         <Route path="/signup" component={FormikForms} />
         <Route path="/login" component={Login} />
         <Route component={Login} />
-      </Switch>
+      </Switch> */}
 
     </div>
   )

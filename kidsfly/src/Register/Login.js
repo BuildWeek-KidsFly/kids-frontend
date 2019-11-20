@@ -8,10 +8,7 @@ import styled from 'styled-components';
 
 
 
-const Login = ( props ) => {
 
-  
-  const [user, setUser] = useState({ email: "", password: "" });
   
 
 const Container = styled.div`
@@ -105,7 +102,7 @@ const Login = (props) => {
   );
 };
 
-const ConnectionFormLogin = withFormik({
+const FormikLogin = withFormik({
 
   mapPropsToValues({ email, password }) {
     return {
@@ -119,16 +116,11 @@ const ConnectionFormLogin = withFormik({
   }),
 
 
-  handleSubmit(values, {setStatus, props}) {
-      
-    
-
-     
 
   handleSubmit(values, { setStatus, props }) {
 
-    console.log("from formik", values)
-    console.log("Formik props", props)
+    // console.log("from formik", values)
+    // console.log("Formik props", props)
 
 
     setStatus(true);
@@ -136,7 +128,7 @@ const ConnectionFormLogin = withFormik({
       .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/login", values)
       .then(res => {
         // setStatus(res.data);
-        console.log(res);
+        // console.log(res);
         localStorage.setItem("token", res.data.token)
         setStatus(false);
         props.YEET(res.data.id)
@@ -147,9 +139,9 @@ const ConnectionFormLogin = withFormik({
         setStatus(false)
       })
       .finally(() => {
-        console.log('From Local Storage', localStorage.getItem("token"))
+        // console.log('From Local Storage', localStorage.getItem("token"))
       })
   }
 })(Login);
 
-export default ConnectionFormLogin;
+export default FormikLogin;
