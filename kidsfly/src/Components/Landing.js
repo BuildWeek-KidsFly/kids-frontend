@@ -32,7 +32,7 @@ const Landing = (props) => {
     `;
 
     const ContainerParent = styled.div`
-        background: #5963DD;
+        background: #091D86;
         width: 35%;
         height: 220px;
         border: solid black 1px;
@@ -43,7 +43,7 @@ const Landing = (props) => {
     `;
 
     const ContainerConnect = styled.div`
-        background: #5963DD;
+        background: #091D86;
         width: 35%;
         height: auto;
         border: solid black 1px;
@@ -53,6 +53,9 @@ const Landing = (props) => {
         color: white;
     `;
 
+    const Header2 = styled.h2`
+        color: #FFCC00;
+    `;
     const TextContain = styled.div`
         max-height: 70px;
         max-width: 330px;
@@ -64,7 +67,7 @@ const Landing = (props) => {
     `;
 
     const Button = styled.button`
-        background: yellow;
+        background: #FFCC00;
         border-radius: 20px;
         height: 50px;
         width: 150px;
@@ -78,18 +81,22 @@ const Landing = (props) => {
             <Banner>
             <Container>
                 <ContainerParent>
-                    <h2>If You're A Parent!</h2>
+                    <Header2>If You're A Parent!</Header2>
                     <TextContain>
                         <Paragraph>Here at KidsFly, we want your travel experience to be First Class! Click below to Register as a KidsFly Traveller today!</Paragraph>
                     </TextContain>
-                    <Button>Parent Click Here!</Button>
+                    <Link to="/signup">
+                        <Button>Parent Click Here!</Button>
+                    </Link>
                 </ContainerParent>
                 <ContainerConnect>
-                    <h2>If You're A Team Member!</h2>
+                    <Header2>If You're A Team Member!</Header2>
                     <TextContain>
-                        <p>Here at KidsFly, we only have the best Connection Members! Click below to Register as a KidsFly Team Member today!</p>
+                        <Paragraph>Here at KidsFly, we only have the best Connection Members! Click below to Register as a KidsFly Team Member today!</Paragraph>
                     </TextContain>
-                    <Button>Team Member Click Here!</Button>
+                    <Link to="/connectionReg">
+                        <Button>Team Member Click Here!</Button>
+                    </Link>
                 </ContainerConnect>
             </Container>
             </Banner>
