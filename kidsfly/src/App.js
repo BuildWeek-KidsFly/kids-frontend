@@ -29,20 +29,13 @@ function App() {
           <Route path="/dashboard" component={Dashboard} />
         </PrivateDash>
         <Route exact path="/connectionReg" render={(props)=> <CRegFormikForms {...props} YEET={setId}/>}/>
-        <Route path="/parentReg" render={(props)=> <ConnectionFormikLogin {...props} YEET={setId}/>}/>
+        <Route path="/connectionLog" render={(props)=> <ConnectionFormikLogin {...props} YEET={setId}/>}/>
         <Route path="/signup" render={(props)=><FormikForms {...props} YEET={setId}/>}/>
         <Route path="/login" render={(props)=> <Login {...props} YEET={setId}/>}/>
         <Route path="/addTrip" component={AddTrip}/>
         <Route path="/"component={Landing}/>
         <Route component={Landing}/>
       </Switch> 
-      {/* <Landing /> */}
-      {/* <Switch/>
-
-        <Route path="/signup" component={FormikForms} />
-        <Route path="/login" component={Login} />
-        <Route component={Login} />
-      </Switch> */}
 
     </div>
   )

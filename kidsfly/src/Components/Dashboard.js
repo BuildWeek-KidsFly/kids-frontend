@@ -3,6 +3,7 @@ import {TripContext} from "../Context/TripContext";
 import axios from 'axios';
 import axiosWithAuth from "../Utils/Axios";
 import {Link} from "react-router-dom";
+
 const Dashboard = ()=>{
 
     const {isLoggedIn, traveler, setTraveler, user, setUser, trips, setTrips} = React.useContext(TripContext);
@@ -13,6 +14,7 @@ const Dashboard = ()=>{
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}`)
             .then((res)=>{
+                console.log(res)
                 if(!localStorage.getItem("user")){
                     localStorage.setItem('user',JSON.stringify(res.data))
                 }
@@ -29,6 +31,7 @@ const Dashboard = ()=>{
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${user.id}/trips`)
             .then((res)=>{
+                console.log(res)
                 if(!localStorage.getItem("trips")){
                     localStorage.setItem('trips',JSON.stringify(res.data))
                 }

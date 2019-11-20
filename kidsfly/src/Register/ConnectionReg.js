@@ -135,7 +135,7 @@ const CRegFormikForms = withFormik({
         localStorage.setItem("token", res.data.token)
         setStatus(false);
         props.YEET(res.data.id)
-        props.history.push("/connectionReg")
+        props.history.push("/connectionLog")
         // console.log(response)
       })
       .catch(err => {
