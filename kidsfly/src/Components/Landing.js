@@ -14,6 +14,10 @@ const Landing = (props) => {
         
     `;
 
+    const Welcome = styled.h1`
+        font-size: 3rem;
+    `;
+
     const Banner = styled.div`
         background-image: url(${myImage});
         background-size: 80vw auto;
@@ -78,7 +82,9 @@ const Landing = (props) => {
     return (
 
         <Page>
+            
             <Banner>
+            <Welcome>Welcome to KidsFly!</Welcome>
             <Container>
                 <ContainerParent>
                     <Header2>If You're A Parent!</Header2>
