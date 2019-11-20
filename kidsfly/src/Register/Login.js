@@ -9,13 +9,20 @@ const Container = styled.div`
 display: flex;
 justify-content: center;
 padding-top: 80px;
-background-image: url('https://images.unsplash.com/photo-1415959588285-66bbf7450d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60');
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-height: 100%;
-margin-left: 100px;
-margin-right: 100px;
+`;
+
+const Background = styled.div`
+background: url('https://images.unsplash.com/photo-1572198404182-2c115d89fb26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+height: 90vh;
+`;
+
+
+const Blank = styled.div`
+  height: 15vh;
 `;
 
 const Card = styled.div`
@@ -46,7 +53,11 @@ const Button = styled.button`
   padding: 14px 20px;
   border-radius: 10px;
   font-size: 16px;
-  cursor: pointer;
+  :hover {
+            background: #5963DD;
+            cursor: pointer;
+            box-shadow: 3px 3px 3px black;
+        }
 
 `;
 
@@ -64,32 +75,35 @@ const Login = (props) => {
   console.log("parent Login")
 
   return (
-    <Container>
-      <Card>
-        <div className="login-form">
-          <Form onSubmit={props.handleSubmit}>
-            {!props.status ? <h1>Please enter login credentials</h1> : <h1>Authenticating...</h1>}
+    <Background>
+      <Container>
 
-            <label htmlFor="email">Email</label>
-            <Box>
-              <Field type="text" name="email" placeholder="Email" />
-              {props.touched.username && props.errors.username && (
-                <p className="errors">{props.errors.username}</p>
-              )}
-            </Box>
+        <Card>
+          <div className="login-form">
+            <Form onSubmit={props.handleSubmit}>
+              {!props.status ? <h1>Parent Login</h1> : <h1>Authenticating...</h1>}
 
-            <label htmlFor="password">Password</label>
-            <Box>
-              <Field type="password" name="password" placeholder="Password" />
-              {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
-            </Box>
+              <label htmlFor="email">Email</label>
+              <Box>
+                <Field type="text" name="email" placeholder="Email" />
+                {props.touched.username && props.errors.username && (
+                  <p className="errors">{props.errors.username}</p>
+                )}
+              </Box>
+
+              <label htmlFor="password">Password</label>
+              <Box>
+                <Field type="password" name="password" placeholder="Password" />
+                {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
+              </Box>
 
 
-            <Button type="submit">Submit</Button>
-          </Form>
-        </div>
-      </Card>
-    </Container>
+              <Button type="submit">Submit</Button>
+            </Form>
+          </div>
+        </Card>
+      </Container>
+    </Background>
   );
 };
 
