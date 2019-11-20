@@ -16,7 +16,7 @@ background: url('https://images.unsplash.com/photo-1572198404182-2c115d89fb26?ix
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-height: 90vh;
+height: 100vh;
 `;
 
 const Card = styled.div`
