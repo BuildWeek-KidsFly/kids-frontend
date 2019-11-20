@@ -53,6 +53,7 @@ const Button = styled.button`
 
 const ConnectionReg = (props) => {
 
+  console.log("connection Reg")
   const [travelers, setTravelers] = useState({ email: '', password: '', home_airport: '' });
 
   return (
@@ -107,7 +108,7 @@ const ConnectionReg = (props) => {
     </Container>
   );
 };
-const ConnectionFormikForms = withFormik({
+const CRegFormikForms = withFormik({
   mapPropsToValues({ email, password, home_airport }) {
     return {
       email: email || '',
@@ -130,9 +131,12 @@ const ConnectionFormikForms = withFormik({
     console.log(values)
     setStatus(true);
     axios.post('https://kidsfly-be-dakotah.herokuapp.com/api/auth/connections/register', values)
-      .then(response => {
+      .then(res => {
+        localStorage.setItem("token", res.data.token)
         setStatus(false);
-        console.log(response)
+        props.YEET(res.data.id)
+        props.history.push("/connectionReg")
+        // console.log(response)
       })
       .catch(err => {
         console.log(err)
@@ -146,4 +150,4 @@ const ConnectionFormikForms = withFormik({
 })(ConnectionReg)
 
 
-export default ConnectionFormikForms;
+export default CRegFormikForms;

@@ -14,6 +14,8 @@ const NavBar = ()=>{
                 <Link to="/signup">Sign Up</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/">Home</Link>
+                <Link to="/parentReg">Connection Login</Link>
+                <Link to="/connectionReg">Connection Registration</Link>
                 <Link to="/dashboard">Dashboard</Link>
                 <button onClick={clear}>Log out</button>
             </header>

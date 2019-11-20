@@ -9,6 +9,8 @@ import PrivateDash from "./PrivateRoutes/PrivateDash";
 import {TripContext} from "./Context/TripContext";
 import Landing from "./Components/Landing";
 import AddTrip from "./Components/AddTrip";
+import ConnectionFormikLogin from "./Register/ConnectionLogin";
+import CRegFormikForms from "./Register/ConnectionReg";
 
 import { Switch, Link, Route } from "react-router-dom";
 
@@ -26,7 +28,9 @@ function App() {
         <PrivateDash path="/dashboard">
           <Route path="/dashboard" component={Dashboard} />
         </PrivateDash>
-        <Route path="/signup" component={FormikForms}/>
+        <Route exact path="/connectionReg" render={(props)=> <CRegFormikForms {...props} YEET={setId}/>}/>
+        <Route path="/parentReg" render={(props)=> <ConnectionFormikLogin {...props} YEET={setId}/>}/>
+        <Route path="/signup" render={(props)=><FormikForms {...props} YEET={setId}/>}/>
         <Route path="/login" render={(props)=> <Login {...props} YEET={setId}/>}/>
         <Route path="/addTrip" component={AddTrip}/>
         <Route path="/"component={Landing}/>

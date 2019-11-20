@@ -59,6 +59,7 @@ const ConnectionLogin = (props) => {
   const [user, setUser] = useState({ email: "", password: "" });
 
 
+  console.log("connecion log")
   return (
     <Container>
       <Card>

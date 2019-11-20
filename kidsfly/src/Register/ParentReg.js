@@ -55,6 +55,8 @@ const Button = styled.button`
 
 const ParentReg = (props) => {
 
+  console.log("parent reg")
+
   const [travelers, setTravelers] = useState({ email: '', password: '', home_airport: '' });
 
   return (
@@ -110,7 +112,7 @@ const ParentReg = (props) => {
     </Container>
   );
 };
-const FormikForms = withFormik({
+const PRegFormikForms = withFormik({
   mapPropsToValues({ email, password, home_airport }) {
     return {
       email: email || '',
@@ -132,9 +134,11 @@ const FormikForms = withFormik({
     console.log(values)
     setStatus(true);
     axios.post('https://kidsfly-be-dakotah.herokuapp.com/api/auth/register', values)
-      .then(response => {
+      .then(res => {
+        localStorage.setItem("token", res.data.token)
         setStatus(false);
-        console.log(response)
+        console.log(res)
+        props.YEET(res.data.id);
         props.history.push("/login")
       })
       .catch(err => {
@@ -149,4 +153,4 @@ const FormikForms = withFormik({
 })(ParentReg)
 
 
-export default FormikForms;
+export default PRegFormikForms;
