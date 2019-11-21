@@ -78,6 +78,7 @@ const Dashboard = (props)=>{
                     <div className="dashboard">
                         <div className = "user">
                             {/* {console.log("full", user)} */}
+                            <h1>Your contact info</h1>
                             <h2>{user.name}</h2>
                             <h4>{user.home_airport}</h4>
                             <h4>{user.phone}</h4>
