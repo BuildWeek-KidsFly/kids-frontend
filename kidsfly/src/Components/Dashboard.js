@@ -4,9 +4,9 @@ import axios from 'axios';
 import axiosWithAuth from "../Utils/Axios";
 import {Link} from "react-router-dom";
 
-const Dashboard = ()=>{
+const Dashboard = (props)=>{
 
-    const { traveler, user, setUser, trips, setTrips, complete, setComplete} = React.useContext(TripContext);
+    const { traveler, user, setUser, trips, setTrips, complete, setComplete, theEditTrip, setTheEditTrip} = React.useContext(TripContext);
 
     console.log("traveler id:",traveler.id)
     // console.log("user id:", user.id)
@@ -55,6 +55,11 @@ const Dashboard = ()=>{
             })
     }
 
+    const editTheTrip = (trip)=>{
+        setTheEditTrip(trip);
+        props.history.push("/edittrip");
+    }
+
         return(
             <div>
                 
@@ -69,7 +74,7 @@ const Dashboard = ()=>{
                     :
                     <div>
                         <h1>Welcome customer, to your kidsfly dashboard</h1>
-                            <div className="dashboard">
+                    <div className="dashboard">
                         <div className = "user">
                             {/* {console.log("full", user)} */}
                             <h2>{user.name}</h2>
@@ -80,7 +85,7 @@ const Dashboard = ()=>{
                         </div>
                         <div className="trips">
                             <h1>Your Flights</h1>
-                            {console.log("trips",trips)}
+                            {/* {console.log("trips",trips)} */}
                             {trips.map((t)=>(
                                 <div>
                                     <h2>{t.airline}</h2>
@@ -91,6 +96,7 @@ const Dashboard = ()=>{
                                     <h4>{t.number_of_items}</h4>
                                     <h4>{t.special}</h4>
                                     <button onClick={()=>removeTrip(t.id)}>Delete</button>
+                                    <button onClick={()=>editTheTrip(t)}>Edit Trip</button>
                                 </div>
                             ))}
                         </div>
