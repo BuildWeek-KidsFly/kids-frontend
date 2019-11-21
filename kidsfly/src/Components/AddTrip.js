@@ -2,7 +2,7 @@ import React from "react";
 import {TripContext} from "../Context/TripContext";
 import axiosWithAuth from "../Utils/Axios";
 
-const AddTrip = ()=>{
+const AddTrip = (props)=>{
 
     const {user} = React.useContext(TripContext)
     console.log("user from add",user)
@@ -37,6 +37,8 @@ const AddTrip = ()=>{
             .catch((err)=>{
                 console.log(err)
             })
+
+            props.history.push("/dashboard")
     }
 
     return(
