@@ -17,10 +17,11 @@ const Dashboard = ()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}`)
             .then((res)=>{
                 console.log("user data use effect",res)
-                if(!localStorage.getItem("user")){
-                    localStorage.setItem('user',JSON.stringify(res.data))
-                }
-                setUser(JSON.parse(localStorage.getItem('user')))
+                // if(!localStorage.getItem("user")){
+                //     localStorage.setItem('user',JSON.stringify(res.data))
+                // }
+                // setUser(JSON.parse(localStorage.getItem('user')))
+                setUser(res.data)
                 
             })
             .catch((err)=>{
@@ -78,10 +79,10 @@ const Dashboard = ()=>{
     const removeTrip = (id)=>{
         axiosWithAuth().delete(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${user.id}/trips/${id}`)
             .then((res)=>{
-                console.log("removeTrip",res)
+                // console.log("removeTrip",res)
             })
             .catch((err)=>{
-                console.log("removeTrip",err)
+                // console.log("removeTrip",err)
             })
             .finally(()=>{
                 setComplete(complete=> !complete);
