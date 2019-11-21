@@ -11,7 +11,7 @@ const PrivateConnectDash = ({children, ...rest})=>{
 
   return(
       <Route {...rest} render={({location}) => isAuth() ? (children) : 
-        (<Redirect to={{ pathname: '/connectionLog', state:{from: location}}}/>)}/>
+        (<Redirect to={{ pathname: '/', state:{from: location}}}/>)}/>
       
   );
 

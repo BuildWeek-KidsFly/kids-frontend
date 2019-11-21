@@ -6,17 +6,17 @@ import {Link} from "react-router-dom";
 
 const Dashboard = ()=>{
 
-    const { traveler,  user, setUser, trips, setTrips} = React.useContext(TripContext);
+    const { traveler, user, setUser, trips, setTrips, complete} = React.useContext(TripContext);
 
     console.log("traveler id:",traveler.id)
-    console.log("user id:", user.id)
+    // console.log("user id:", user.id)
 
     
 
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}`)
             .then((res)=>{
-                console.log(res)
+                console.log("user data use effect",res)
                 if(!localStorage.getItem("user")){
                     localStorage.setItem('user',JSON.stringify(res.data))
                 }
@@ -26,19 +26,16 @@ const Dashboard = ()=>{
             .catch((err)=>{
                 console.log(err)
             })
-           
-            
-        
-    },[])
 
-    React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}/trips`)
             .then((res)=>{
                 // console.log(res)
-                if(!localStorage.getItem("trips")){
-                    localStorage.setItem('trips',JSON.stringify(res.data))
-                }
-                setTrips(JSON.parse(localStorage.getItem('trips')));
+                // if(!localStorage.getItem("trips")){
+                //     localStorage.setItem('trips',JSON.stringify(res.data))
+                // }
+                // setTrips(JSON.parse(localStorage.getItem('trips')));
+                console.log("the response from second",res)
+                setTrips(res.data)
             })
             .catch((err)=>{
                 console.log(err)
@@ -46,7 +43,29 @@ const Dashboard = ()=>{
             .finally(()=>{
                 
             })
-    },[])
+           
+            
+        
+    },[complete])
+
+    // React.useEffect(()=>{
+    //     axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}/trips`)
+    //         .then((res)=>{
+    //             // console.log(res)
+    //             // if(!localStorage.getItem("trips")){
+    //             //     localStorage.setItem('trips',JSON.stringify(res.data))
+    //             // }
+    //             // setTrips(JSON.parse(localStorage.getItem('trips')));
+    //             console.log("the response from second",res)
+    //             setTrips(res.data)
+    //         })
+    //         .catch((err)=>{
+    //             console.log(err)
+    //         })
+    //         .finally(()=>{
+                
+    //         })
+    // },[])
 
 
     // if(user.phone===null){
@@ -72,7 +91,7 @@ const Dashboard = ()=>{
                         <h1>Welcome customer, to your kidsfly dashboard</h1>
                             <div className="dashboard">
                         <div className = "user">
-                            {console.log("full", user)}
+                            {/* {console.log("full", user)} */}
                             <h2>{user.name}</h2>
                             <h4>{user.home_airport}</h4>
                             <h4>{user.phone}</h4>
@@ -81,6 +100,7 @@ const Dashboard = ()=>{
                         </div>
                         <div className="trips">
                             <h1>Your Flights</h1>
+                            {console.log("trips",trips)}
                             {trips.map((t)=>(
                                 <div>
                                     <h2>{t.airline}</h2>

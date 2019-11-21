@@ -75,7 +75,7 @@ const Login = (props) => {
 
 
 
-  console.log("parent Login")
+  
 
 
   return (

@@ -63,7 +63,7 @@ const Button = styled.button`
 
 const ParentReg = (props) => {
 
-  console.log("parent reg")
+  
 
   const [travelers, setTravelers] = useState({ email: '', password: '', home_airport: '' });
 
@@ -114,15 +114,14 @@ const PRegFormikForms = withFormik({
   mapPropsToValues({ email, password, home_airport }) {
     return {
       email: email || '',
-      password: password || '',
-      home_airport: home_airport || ''
+      password: password || ''
     }
   },
 
   validationSchema: Yup.object().shape({
     email: Yup.string().required('email required'),
     password: Yup.string().required('password required'),
-    home_airport: Yup.string().required('airport required')
+    
 
 
   }),
@@ -144,9 +143,6 @@ const PRegFormikForms = withFormik({
         setStatus(false);
       })
   }
-
-
-
 
 })(ParentReg)
 

@@ -4,8 +4,8 @@ import axiosWithAuth from "../Utils/Axios";
 
 const AddTrip = (props)=>{
 
-    const {user} = React.useContext(TripContext)
-    console.log("user from add",user)
+    const {user,setComplete,complete} = React.useContext(TripContext)
+    
 
     const [input, setInput] = React.useState({
         airline:"",
@@ -31,14 +31,18 @@ const AddTrip = (props)=>{
             .then((res)=>{
                 console.log(res)
                 localStorage.removeItem("trips");
+                setComplete(complete=>!complete);
             }
                 
             )
             .catch((err)=>{
                 console.log(err)
             })
+            .finally(()=>{
+                props.history.push("/dashboard")
+            })
 
-            props.history.push("/dashboard")
+            
     }
 
     return(
@@ -53,13 +57,13 @@ const AddTrip = (props)=>{
                 <input type = "text" name = "departure_time" placeholder="departure_time"onChange={handleinput}/>
             </div>
             <div>
-                <input type = "text" name = "flight_number" placeholder="flight_number"onChange={handleinput}/>
+                <input type = "number" name = "flight_number" placeholder="flight_number"onChange={handleinput}/>
             </div>
             <div>
-                <input type = "text" name = "number_of_children" placeholder="number_of_children"onChange={handleinput}/>
+                <input type = "number" name = "number_of_children" placeholder="number_of_children"onChange={handleinput}/>
             </div>
             <div>
-                <input type = "text" name = "number_of_items" placeholder="number_of_items"onChange={handleinput}/>
+                <input type = "number" name = "number_of_items" placeholder="number_of_items"onChange={handleinput}/>
             </div>
             <div>
                 <input type = "text" name = "special" placeholder="special"onChange={handleinput}/>

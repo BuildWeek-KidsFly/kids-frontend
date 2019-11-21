@@ -11,7 +11,8 @@ const Complete = ()=>{
     const [input, setInput] = React.useState({
         name:"",
         address: "",
-        phone: ""
+        phone: "",
+        home_airport:""
     })
 
     const handleChange = (e)=>{
@@ -46,6 +47,10 @@ const Complete = ()=>{
             <div>
                 <label>Phone:</label>
                 <input type="text" name="phone" value ={input.phone} onChange={handleChange}></input>
+            </div>
+            <div>
+                <label>Phone:</label>
+                <input type="text" name="home_airport" value ={input.home_airport} onChange={handleChange}></input>
             </div>
             <button onClick={handleSub}>submit</button>
         </form>
