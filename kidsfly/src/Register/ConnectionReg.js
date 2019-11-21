@@ -98,7 +98,7 @@ const ConnectionReg = (props) => {
               </Box>
             </div>
 
-            <Button type='submit'>Submit</Button>
+            <Button type='submit'>Register</Button>
             <p>Already have an Account? <NavLink to='/connectionLog'>Click Here</NavLink></p>
           </Form>
 

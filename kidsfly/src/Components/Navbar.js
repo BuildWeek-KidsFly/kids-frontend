@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
-const NavBar = (props)=>{
+const NavBar = (props) => {
 
     const clear = () => {
         window.location.reload();
         localStorage.clear();
-        
+
         props.history.push("/");
     }
-   
-const Button = styled.button`
+
+    const Button = styled.button`
     background: #FFCC00;
     border-radius: 20px;
     height: 50px;

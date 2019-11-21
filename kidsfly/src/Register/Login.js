@@ -20,11 +20,6 @@ background: url('https://images.unsplash.com/photo-1572198404182-2c115d89fb26?ix
 height: 100vh;
 `;
 
-
-const Blank = styled.div`
-  height: 15vh;
-`;
-
 const Card = styled.div`
 background: #091d86;
 width: 400px;
@@ -62,20 +57,10 @@ const Button = styled.button`
 `;
 
 
-
-
-
-
-
 const Login = (props) => {
 
   // const Login = ({ errors, touched, values }) => {
   const [user, setUser] = useState({ email: "", password: "" });
-
-
-
-
-  
 
 
   return (
@@ -102,7 +87,7 @@ const Login = (props) => {
               </Box>
 
 
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Login</Button>
             </Form>
           </div>
         </Card>
