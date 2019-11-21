@@ -27,20 +27,25 @@ const NavBar = (props) => {
         cursor: pointer;
         box-shadow: 3px 3px 3px black;
     }
+    @media (max-width: 500px) {
+        height: 40px;
+        width: 110px;
+        font-size: 1rem;
+        border-radius: 15px;
+    }
 `;
 
     return (
         <div className="Nav">
             <header className="Header">
-
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/login">Parent Login</NavLink>
                 <NavLink to="/signup">Parent Sign Up</NavLink>
-                <NavLink to="/connectionLog">Connect Login</NavLink>
                 <NavLink to="/connectionReg">Connect Sign Up</NavLink>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-                <NavLink to="/connectdashboard">Connection Dashboard</NavLink>
                 <Button onClick={clear}>Log Out</Button>
+                {/* <NavLink to="/login">Parent Login</NavLink>
+                <NavLink to="/connectionLog">Connection Login</NavLink>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+                <NavLink to="/connectdashboard">Connect Dashboard</NavLink> */}
 
             </header>
         </div>
