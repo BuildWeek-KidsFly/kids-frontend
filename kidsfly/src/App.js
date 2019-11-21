@@ -27,7 +27,6 @@ function App() {
 
   return (
     <div className="App">
-<Route path="/"component={Landing}/>
       <NavBar/>
 
       <Switch>
@@ -45,7 +44,7 @@ function App() {
         <Route path="/signup" render={(props)=><FormikForms {...props} YEET={setId}/>}/>
         <Route path="/login" render={(props)=> <Login {...props} YEET={setId}/>}/>
         <Route path="/addTrip" component={AddTrip}/>
-        
+        <Route path="/"component={Landing}/>
         <Route component={Landing}/>
       </Switch> 
 
