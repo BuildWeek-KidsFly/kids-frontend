@@ -6,10 +6,11 @@ import {Link} from "react-router-dom";
 
 const Dashboard = (props)=>{
 
-    const { traveler, user, setUser, trips, setTrips, complete, setComplete, theEditTrip, setTheEditTrip} = React.useContext(TripContext);
+    const { traveler, user, setUser, trips, setTrips, complete, setComplete, theEditTrip, setTheEditTrip,setParent} = React.useContext(TripContext);
 
     console.log("traveler id:",traveler.id)
     // console.log("user id:", user.id)
+    setParent(true);
 
     localStorage.setItem("traveler", JSON.stringify(traveler));
 
@@ -80,7 +81,7 @@ const Dashboard = (props)=>{
                             <h2>{user.name}</h2>
                             <h4>{user.home_airport}</h4>
                             <h4>{user.phone}</h4>
-                            <p>{user.id}</p>
+                            
                             <Link to="/updateparent">Update</Link>
                         </div>
                         <div className="trips">
@@ -107,32 +108,6 @@ const Dashboard = (props)=>{
                     
                     
                 }
-                {/* <h1>Welcome customer, to your KidsFly dashboard</h1>
-                <div className="dashboard">
-                    <div className = "user">
-                        {console.log("full", user)}
-                        <h2>{user.name}</h2>
-                        <h4>{user.home_airport}</h4>
-                        <h4>{user.phone}</h4>
-                        <p>{user.id}</p>
-                    </div>
-                    <div className="trips">
-                        <h1>Your Flights</h1>
-                        {trips.map((t)=>(
-                            <div>
-                                <h2>{t.airline}</h2>
-                                <h4>{t.airport_name}</h4>
-                                <h4>{t.departure_time}</h4>
-                                <h4>{t.flight_number}</h4>
-                                <h4>{t.number_of_children}</h4>
-                                <h4>{t.number_of_items}</h4>
-                                <h4>{t.special}</h4>
-                            </div>
-                        ))}
-                    </div>
-                        
-                </div>
-                <Link to="/addTrip">Add Trip</Link> */}
             </div>
         );
     
