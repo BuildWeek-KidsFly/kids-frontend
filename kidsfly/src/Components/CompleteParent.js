@@ -1,6 +1,7 @@
 import React from 'react';
 import {TripContext} from "../Context/TripContext";
 import axiosWithAuth from "../Utils/Axios";
+import {Card, Button, Container} from "../Styled/Styled";
 
 
 const Complete = (props)=>{
@@ -37,26 +38,30 @@ const Complete = (props)=>{
 
 
     return(
-        <form>
-            <h2>Please enter additional information</h2>
-            <div>
-                <label>Name:</label>
-                <input type="text" name="name" value ={input.name} onChange={handleChange}></input>
-            </div>
-            <div>
-                <label>Address:</label>
-                <input type="text" name="address" value ={input.address} onChange={handleChange}></input>
-            </div>
-            <div>
-                <label>Phone:</label>
-                <input type="text" name="phone" value ={input.phone} onChange={handleChange}></input>
-            </div>
-            <div>
-                <label>Phone:</label>
-                <input type="text" name="home_airport" value ={input.home_airport} onChange={handleChange}></input>
-            </div>
-            <button onClick={handleSub}>submit</button>
-        </form>
+        <Container>
+            <Card>
+                <form>
+                    <h2>Please enter additional information</h2>
+                    <div>
+                        <label>Name:</label>
+                        <input type="text" name="name" value ={input.name} onChange={handleChange}></input>
+                    </div>
+                    <div>
+                        <label>Address:</label>
+                        <input type="text" name="address" value ={input.address} onChange={handleChange}></input>
+                    </div>
+                    <div>
+                        <label>Phone:</label>
+                        <input type="text" name="phone" value ={input.phone} onChange={handleChange}></input>
+                    </div>
+                    <div>
+                        <label>Home Airport:</label>
+                        <input type="text" name="home_airport" value ={input.home_airport} onChange={handleChange}></input>
+                    </div>
+                    <Button onClick={handleSub}>submit</Button>
+                </form>
+            </Card>
+        </Container>
     );
 }
 

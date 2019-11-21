@@ -63,7 +63,7 @@ const Button = styled.button`
 
 const ParentReg = (props) => {
 
-  
+
 
   const [travelers, setTravelers] = useState({ email: '', password: '', home_airport: '' });
 
@@ -101,7 +101,7 @@ const ParentReg = (props) => {
               </Box>
             </div>
 
-            <Button type='submit'>Submit</Button>
+            <Button type='submit'>Register</Button>
             <p>Already have an Account? <NavLink to='/login'>Click Here</NavLink></p>
           </Form>
 
@@ -121,7 +121,7 @@ const PRegFormikForms = withFormik({
   validationSchema: Yup.object().shape({
     email: Yup.string().required('email required'),
     password: Yup.string().required('password required'),
-    
+
 
 
   }),

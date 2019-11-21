@@ -68,16 +68,17 @@ const Dashboard = (props)=>{
                 
                     !user.phone ?
                     <div>
-                        <h1>Looks like your account isn't complete, follow the link to add more info</h1>
+                        <h1>Looks like your account isn't complete. Follow the link to add more info.</h1>
                         <Link to="/completeparent">Complete My Account</Link>
                     </div>
                    
                     :
                     <div>
-                        <h1>Welcome customer, to your kidsfly dashboard</h1>
+                        <h1>Welcome Customer, to your KidsFly Dashboard</h1>
                     <div className="dashboard">
                         <div className = "user">
                             {/* {console.log("full", user)} */}
+                            <h1>Your Contact Info</h1>
                             <h2>{user.name}</h2>
                             <h4>{user.home_airport}</h4>
                             <h4>{user.phone}</h4>

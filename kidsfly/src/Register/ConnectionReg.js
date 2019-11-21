@@ -98,7 +98,7 @@ const ConnectionReg = (props) => {
               </Box>
             </div>
 
-            <Button type='submit'>Submit</Button>
+            <Button type='submit'>Register</Button>
             <p>Already have an Account? <NavLink to='/connectionLog'>Click Here</NavLink></p>
           </Form>
 
@@ -107,20 +107,18 @@ const ConnectionReg = (props) => {
     </Background>
   );
 };
+
 const CRegFormikForms = withFormik({
-  mapPropsToValues({ email, password, home_airport }) {
+  mapPropsToValues({ email, password}) {
     return {
       email: email || '',
-      password: password || '',
-      home_airport: home_airport || ''
+      password: password || ''
     }
   },
 
   validationSchema: Yup.object().shape({
     email: Yup.string().required('email required'),
-    password: Yup.string().required('password required'),
-    home_airport: Yup.string().required('airport required')
-
+    password: Yup.string().required('password required')
 
   }),
 
