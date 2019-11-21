@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-
+      
       <Switch>
         <PrivateDash path="/dashboard">
           <Route path="/dashboard" component={Dashboard} />
