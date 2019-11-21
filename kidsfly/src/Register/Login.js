@@ -9,6 +9,12 @@ const Container = styled.div`
 display: flex;
 justify-content: center;
 padding-top: 80px;
+
+@media (max-width: 800px){
+  width: 100%;
+  margin: 0;
+
+}
 `;
 
 const Background = styled.div`
@@ -18,11 +24,7 @@ background: url('https://images.unsplash.com/photo-1572198404182-2c115d89fb26?ix
         -o-background-size: cover;
         background-size: cover;
 height: 100vh;
-`;
 
-
-const Blank = styled.div`
-  height: 15vh;
 `;
 
 const Card = styled.div`
@@ -62,20 +64,10 @@ const Button = styled.button`
 `;
 
 
-
-
-
-
-
 const Login = (props) => {
 
   // const Login = ({ errors, touched, values }) => {
   const [user, setUser] = useState({ email: "", password: "" });
-
-
-
-
-  
 
 
   return (
@@ -102,7 +94,7 @@ const Login = (props) => {
               </Box>
 
 
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Login</Button>
             </Form>
           </div>
         </Card>

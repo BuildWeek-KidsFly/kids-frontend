@@ -87,7 +87,7 @@ const ConnectionLogin = (props) => {
                   {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
                 </Box>
               </div>
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Login</Button>
             </Form>
           </div>
         </Card>
