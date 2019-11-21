@@ -40,7 +40,7 @@ const EditTrip = (props)=>{
     return(
     <Container>
         <Card>
-            <h2>Edit Trip</h2>
+            <h2>Edit Your Trip</h2>
                 <EditStyle>
                     <div>
                         <label>Airline: </label>
