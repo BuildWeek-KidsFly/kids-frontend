@@ -9,7 +9,7 @@ export const TripProvider = props=>{
 
     const [complete, setComplete] = useState(false);
 
-    //traveler just holds the id
+    //traveler just holds the id of parent or connection
     const [traveler, setTraveler] = useState(()=>{
         if(localStorage.getItem("traveler")){
             return JSON.parse(localStorage.getItem("traveler"))
@@ -21,6 +21,8 @@ export const TripProvider = props=>{
     //user dynamically holds the connection or parent
     const [user, setUser] = useState({});
 
+    const [theEditTrip, setTheEditTrip]= useState({});
+
     const setId = (id)=>{
         setTraveler({...traveler, id: id })
     }
@@ -29,7 +31,7 @@ export const TripProvider = props=>{
 
     return(
         
-        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips, complete, setComplete, traveler, setTraveler, setId, user, setUser}}>
+        <TripContext.Provider value={{isLoggedIn, setLoggedIn, trips, setTrips, complete, setComplete, traveler, setTraveler, setId, user, setUser,theEditTrip,setTheEditTrip}}>
             {props.children}
         </TripContext.Provider>
     );
