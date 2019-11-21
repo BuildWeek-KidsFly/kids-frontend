@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 import LandingImg from "../../src/img/airplanes.jpg";
 
-const Landing = (props) => {
+const Landing = () => {
 
     const Page = styled.div`
         background: white;
