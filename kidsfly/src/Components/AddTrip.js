@@ -1,6 +1,7 @@
 import React from "react";
 import {TripContext} from "../Context/TripContext";
 import axiosWithAuth from "../Utils/Axios";
+import {Card, Button, Container} from "../Styled/Styled";
 
 const AddTrip = (props)=>{
 
@@ -46,30 +47,35 @@ const AddTrip = (props)=>{
     }
 
     return(
-        <form>
-            <div>
-                <input type = "text" name = "airline" placeholder="airline" onChange={handleinput}/>
-            </div>
-            <div>
-                <input type = "text" name = "airport_name" placeholder="airport_name"onChange={handleinput}/>
-            </div>
-            <div>
-                <input type = "text" name = "departure_time" placeholder="departure_time"onChange={handleinput}/>
-            </div>
-            <div>
-                <input type = "number" name = "flight_number" placeholder="flight_number"onChange={handleinput}/>
-            </div>
-            <div>
-                <input type = "number" name = "number_of_children" placeholder="number_of_children"onChange={handleinput}/>
-            </div>
-            <div>
-                <input type = "number" name = "number_of_items" placeholder="number_of_items"onChange={handleinput}/>
-            </div>
-            <div>
-                <input type = "text" name = "special" placeholder="special"onChange={handleinput}/>
-            </div>
-            <button onClick={sub}>Submit</button>
-        </form>
+    <Container>
+        <Card>
+            <form>
+                <div>
+                    <h1>Enter the information about your trip!</h1>
+                    <input type = "text" name = "airline" placeholder="airline" onChange={handleinput}/>
+                </div>
+                <div>
+                    <input type = "text" name = "airport_name" placeholder="airport_name"onChange={handleinput}/>
+                </div>
+                <div>
+                    <input type = "text" name = "departure_time" placeholder="departure_time"onChange={handleinput}/>
+                </div>
+                <div>
+                    <input type = "number" name = "flight_number" placeholder="flight_number"onChange={handleinput}/>
+                </div>
+                <div>
+                    <input type = "number" name = "number_of_children" placeholder="number_of_children"onChange={handleinput}/>
+                </div>
+                <div>
+                    <input type = "number" name = "number_of_items" placeholder="number_of_items"onChange={handleinput}/>
+                </div>
+                <div>
+                    <input type = "text" name = "special" placeholder="special"onChange={handleinput}/>
+                </div>
+                <Button onClick={sub}>Submit</Button>
+            </form>
+        </Card>
+    </Container>
     );
 }
 
