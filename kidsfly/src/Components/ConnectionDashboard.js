@@ -6,52 +6,44 @@ import {Link} from "react-router-dom";
 
 const ConnectionDashboard = ()=>{
 
-    const {isLoggedIn, traveler, setTraveler, user, setUser, trips, setTrips} = React.useContext(TripContext);
+    const {traveler, setTraveler, user, setUser, trips, setTrips, complete, setComplete,setConnector} = React.useContext(TripContext);
 
     console.log("traveler id:",traveler.id)
-    console.log("user id:", user.id)
+    // console.log("user id:", user.id)
+    setConnector(true);
     
+    localStorage.setItem("traveler", JSON.stringify(traveler));
 
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/connections/${traveler.id}`)
             .then((res)=>{
                 console.log(res)
-                if(!localStorage.getItem("user")){
-                    localStorage.setItem('user',JSON.stringify(res.data))
-                }
-                setUser(JSON.parse(localStorage.getItem('user')))
+
+                setUser(res.data)
                 
             })
             .catch((err)=>{
                 console.log(err)
             })
-            
-        
-    },[])
 
-    React.useEffect(()=>{
-        axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/connections/${traveler.id}/trips`)
+            axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/connections/${traveler.id}/trips`)
             .then((res)=>{
                 console.log(res)
-                if(!localStorage.getItem("trips")){
-                    localStorage.setItem('trips',JSON.stringify(res.data))
-                }
-                setTrips(JSON.parse(localStorage.getItem('trips')));
+                
+                setTrips(res.data);
             })
             .catch((err)=>{
                 console.log(err)
             })
             .finally(()=>{
-                console.log("trips", trips)
+                
             })
-    },[])
+            
+        
+    },[complete])
 
-
-    if(user === null){
-        return(
-            <h1>Loading...</h1>
-        );
-    }
+   
+    
 
         return(
             <div>
@@ -60,8 +52,6 @@ const ConnectionDashboard = ()=>{
                     <div className = "user">
                         <h2>{user.name}</h2>
                         <h4>{user.home_airport}</h4>
-                        <h4>{user.phone}</h4>
-                        <p>{user.id}</p>
                     </div>
                     <div className="trips">
                         <h1>Your Flights</h1>
@@ -86,10 +76,8 @@ const ConnectionDashboard = ()=>{
                             ))
 
                         }
-                    </div>
-                        
+                    </div>  
                 </div>
-                <Link to="/addTrip">Add Trip</Link>
             </div>
         );
     
