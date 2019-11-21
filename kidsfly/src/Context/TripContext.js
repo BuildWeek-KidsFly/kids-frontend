@@ -10,7 +10,14 @@ export const TripProvider = props=>{
     const [complete, setComplete] = useState(false);
 
     //traveler just holds the id
-    const [traveler, setTraveler] = useState({});
+    const [traveler, setTraveler] = useState(()=>{
+        if(localStorage.getItem("traveler")){
+            return JSON.parse(localStorage.getItem("traveler"))
+        }else{
+            return {}
+        }
+
+    });
     //user dynamically holds the connection or parent
     const [user, setUser] = useState({});
 

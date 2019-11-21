@@ -11,16 +11,13 @@ const Dashboard = ()=>{
     console.log("traveler id:",traveler.id)
     // console.log("user id:", user.id)
 
-    
+    localStorage.setItem("traveler", JSON.stringify(traveler));
 
     React.useEffect(()=>{
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}`)
             .then((res)=>{
                 console.log("user data use effect",res)
-                // if(!localStorage.getItem("user")){
-                //     localStorage.setItem('user',JSON.stringify(res.data))
-                // }
-                // setUser(JSON.parse(localStorage.getItem('user')))
+                
                 setUser(res.data)
                 
             })
@@ -30,11 +27,7 @@ const Dashboard = ()=>{
 
         axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}/trips`)
             .then((res)=>{
-                // console.log(res)
-                // if(!localStorage.getItem("trips")){
-                //     localStorage.setItem('trips',JSON.stringify(res.data))
-                // }
-                // setTrips(JSON.parse(localStorage.getItem('trips')));
+                
                 console.log("the response from second",res)
                 setTrips(res.data)
             })
@@ -48,33 +41,6 @@ const Dashboard = ()=>{
             
         
     },[complete])
-
-    // React.useEffect(()=>{
-    //     axiosWithAuth().get(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${traveler.id}/trips`)
-    //         .then((res)=>{
-    //             // console.log(res)
-    //             // if(!localStorage.getItem("trips")){
-    //             //     localStorage.setItem('trips',JSON.stringify(res.data))
-    //             // }
-    //             // setTrips(JSON.parse(localStorage.getItem('trips')));
-    //             console.log("the response from second",res)
-    //             setTrips(res.data)
-    //         })
-    //         .catch((err)=>{
-    //             console.log(err)
-    //         })
-    //         .finally(()=>{
-                
-    //         })
-    // },[])
-
-
-    // if(user.phone===null){
-    //     console.log("condition")
-    //     return(
-    //         <h1>Loading...</h1>
-    //     );
-    // }
 
     const removeTrip = (id)=>{
         axiosWithAuth().delete(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${user.id}/trips/${id}`)
