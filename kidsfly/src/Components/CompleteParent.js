@@ -3,7 +3,7 @@ import {TripContext} from "../Context/TripContext";
 import axiosWithAuth from "../Utils/Axios";
 
 
-const Complete = ()=>{
+const Complete = (props)=>{
 
     const {user, traveler} = React.useContext(TripContext)
     console.log("user:",user, "trav", traveler)
@@ -25,10 +25,13 @@ const Complete = ()=>{
             .then((res)=>{
                 console.log(res)
                 localStorage.removeItem("user")
-                localStorage.removeItem("trips")
+                
             })
             .catch((err)=>{
                 console.log(err)
+            })
+            .finally(()=>{
+                props.history.push("/dashboard")
             })
     }
 

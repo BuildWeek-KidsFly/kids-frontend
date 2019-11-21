@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 
 const Dashboard = ()=>{
 
-    const { traveler, user, setUser, trips, setTrips, complete} = React.useContext(TripContext);
+    const { traveler, user, setUser, trips, setTrips, complete, setComplete} = React.useContext(TripContext);
 
     console.log("traveler id:",traveler.id)
     // console.log("user id:", user.id)
@@ -75,6 +75,19 @@ const Dashboard = ()=>{
     //     );
     // }
 
+    const removeTrip = (id)=>{
+        axiosWithAuth().delete(`https://kidsfly-be-dakotah.herokuapp.com/api/users/${user.id}/trips/${id}`)
+            .then((res)=>{
+                console.log("removeTrip",res)
+            })
+            .catch((err)=>{
+                console.log("removeTrip",err)
+            })
+            .finally(()=>{
+                setComplete(complete=> !complete);
+            })
+    }
+
         return(
             <div>
                 
@@ -110,6 +123,7 @@ const Dashboard = ()=>{
                                     <h4>{t.number_of_children}</h4>
                                     <h4>{t.number_of_items}</h4>
                                     <h4>{t.special}</h4>
+                                    <button onClick={()=>removeTrip(t.id)}>Delete</button>
                                 </div>
                             ))}
                         </div>
