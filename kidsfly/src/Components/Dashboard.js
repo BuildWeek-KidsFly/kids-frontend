@@ -77,6 +77,7 @@ const Dashboard = ()=>{
                             <h4>{user.home_airport}</h4>
                             <h4>{user.phone}</h4>
                             <p>{user.id}</p>
+                            <Link to="/updateparent">Update</Link>
                         </div>
                         <div className="trips">
                             <h1>Your Flights</h1>

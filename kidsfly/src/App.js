@@ -14,6 +14,7 @@ import CRegFormikForms from "./Register/ConnectionReg";
 import ConnectionDashboard from "./Components/ConnectionDashboard";
 import PrivateConnectDash from "./PrivateRoutes/PrivateConnectDash";
 import Complete from "./Components/CompleteParent";
+import UpdateParent from "./Components/UpdateParent";
 
 
 import { Switch, Link, Route } from "react-router-dom";
@@ -35,6 +36,7 @@ function App() {
         <PrivateConnectDash path="/connectdashboard">
           <Route path="/connectdashboard" component={ConnectionDashboard} />
         </PrivateConnectDash>
+        <Route path="/updateparent" component = {UpdateParent}/>
         <Route path="/completeparent" component={Complete}/>
         <Route exact path="/connectionReg" render={(props)=> <CRegFormikForms {...props} YEET={setId}/>}/>
         <Route path="/connectionLog" render={(props)=> <ConnectionFormikLogin {...props} YEET={setId}/>}/>
