@@ -7,27 +7,29 @@ import styled from 'styled-components';
 const Container = styled.div`
 display: flex;
 justify-content: center;
-padding-top: 100px;
-background-image: url('https://images.unsplash.com/photo-1415959588285-66bbf7450d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60');
-background-color: black;
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-margin-left: 60px;
-margin-right:60px;
+padding-top: 80px;
+`;
+
+const Background = styled.div`
+background: url('https://images.unsplash.com/photo-1572198404182-2c115d89fb26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+height: 100vh;
 `;
 
 const Card = styled.div`
-background: #999999;
+background: #091d86;
 width: 400px;
 max-height: 400px;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
-margin-bottom: 20px;
-box-shadow: 5px 5px #666666 ;
-border: 2px solid white;
+margin-bottom: 80px;
+box-shadow: 5px 5px black ;
+border: 2px solid #999999;
 color: #ffcc00;
 `;
 
@@ -45,11 +47,13 @@ const Button = styled.button`
   padding: 14px 20px;
   border-radius: 10px;
   font-size: 16px;
-  cursor: pointer;
+  :hover {
+            background: #5963DD;
+            cursor: pointer;
+            box-shadow: 3px 3px 3px black;
+        }
 
 `;
-
-
 
 
 
@@ -59,34 +63,36 @@ const ConnectionLogin = (props) => {
   const [user, setUser] = useState({ email: "", password: "" });
 
 
-  console.log("connecion log")
+  console.log("connection log")
   return (
-    <Container>
-      <Card>
-        <div className="login-form">
-          <Form onSubmit={props.handleSubmit}>
-            {!props.status ? <h1>Please enter login credentials</h1> : <h1>Authenticating...</h1>}
-            <div>
-              <label htmlFor="email">Email:</label>
-              <Box>
-                <Field type="text" name="email" placeholder="Email" />
-                {props.touched.username && props.errors.username && (
-                  <p className="errors">{props.errors.username}</p>
-                )}
-              </Box>
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <Box>
-                <Field type="password" name="password" placeholder="Password" />
-                {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
-              </Box>
-            </div>
-            <button type="submit">Submit</button>
-          </Form>
-        </div>
-      </Card>
-    </Container>
+    <Background>
+      <Container>
+        <Card>
+          <div className="login-form">
+            <Form onSubmit={props.handleSubmit}>
+              {!props.status ? <h1>Connection Login </h1> : <h1>Authenticating...</h1>}
+              <div>
+                <label htmlFor="email">Email:</label>
+                <Box>
+                  <Field type="text" name="email" placeholder="Email" />
+                  {props.touched.username && props.errors.username && (
+                    <p className="errors">{props.errors.username}</p>
+                  )}
+                </Box>
+              </div>
+              <div>
+                <label htmlFor="password">Password:</label>
+                <Box>
+                  <Field type="password" name="password" placeholder="Password" />
+                  {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
+                </Box>
+              </div>
+              <Button type="submit">Submit</Button>
+            </Form>
+          </div>
+        </Card>
+      </Container>
+    </Background>
   );
 };
 
