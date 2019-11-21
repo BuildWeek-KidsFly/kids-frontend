@@ -29,7 +29,7 @@ function App() {
     <div className="App">
 
       <NavBar/>
-
+      
       <Switch>
         <PrivateDash path="/dashboard">
           <Route path="/dashboard" component={Dashboard} />
