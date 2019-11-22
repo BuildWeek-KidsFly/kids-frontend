@@ -51,26 +51,26 @@ const AddTrip = (props)=>{
         <Card>
             <form>
                 <div>
-                    <h1>Enter the information about your trip!</h1>
-                    <input type = "text" name = "airline" placeholder="airline" onChange={handleinput}/>
+                    <h1>Enter Your Travel Information</h1>
+                    <input type = "text" name = "airline" placeholder="Airline" onChange={handleinput}/>
                 </div>
                 <div>
-                    <input type = "text" name = "airport_name" placeholder="airport_name"onChange={handleinput}/>
+                    <input type = "text" name = "airport_name" placeholder="Airport Name"onChange={handleinput}/>
                 </div>
                 <div>
-                    <input type = "text" name = "departure_time" placeholder="departure_time"onChange={handleinput}/>
+                    <input type = "text" name = "departure_time" placeholder="Departure Time"onChange={handleinput}/>
                 </div>
                 <div>
-                    <input type = "number" name = "flight_number" placeholder="flight_number"onChange={handleinput}/>
+                    <input type = "number" name = "flight_number" placeholder="Flight Number"onChange={handleinput}/>
                 </div>
                 <div>
-                    <input type = "number" name = "number_of_children" placeholder="number_of_children"onChange={handleinput}/>
+                    <input type = "number" name = "number_of_children" placeholder="Number of Children"onChange={handleinput}/>
                 </div>
                 <div>
-                    <input type = "number" name = "number_of_items" placeholder="number_of_items"onChange={handleinput}/>
+                    <input type = "number" name = "number_of_items" placeholder="Number of Items"onChange={handleinput}/>
                 </div>
                 <div>
-                    <input type = "text" name = "special" placeholder="special"onChange={handleinput}/>
+                    <input type = "text" name = "special" placeholder="Special"onChange={handleinput}/>
                 </div>
                 <Button onClick={sub}>Submit</Button>
             </form>
