@@ -41,12 +41,12 @@ const NavBar = (props) => {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/signup">Parent Sign Up</NavLink>
                 <NavLink to="/connectionReg">Connect Sign Up</NavLink>
-                <Button onClick={clear}>Log Out</Button>
-                {/* <NavLink to="/login">Parent Login</NavLink>
-                <NavLink to="/connectionLog">Connection Login</NavLink>
+                
+                {/* <NavLink to="/login">Parent Login</NavLink> */}
+                {/* <NavLink to="/connectionLog">Connection Login</NavLink> */}
                 <NavLink to="/dashboard">Dashboard</NavLink>
-                <NavLink to="/connectdashboard">Connect Dashboard</NavLink> */}
-
+                <NavLink to="/connectdashboard">Connect Dashboard</NavLink>
+                <Button onClick={clear}>Log Out</Button>
             </header>
         </div>
     );
