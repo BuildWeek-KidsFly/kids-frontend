@@ -62,3 +62,6 @@ export const UpdateStyleChild = styled.div`
         margin: 0 auto;
 
 `;
+
+
+const test= "test";
