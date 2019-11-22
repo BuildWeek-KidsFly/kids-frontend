@@ -97,6 +97,19 @@ const ConnectionReg = (props) => {
                 )}
               </Box>
             </div>
+            <div>
+              <label htmlFor="home_airport">Home airport</label>
+              <Box>
+                <Field
+                  type='text'
+                  name='home_airport'
+                  placeholder='home airport'
+                />
+                {props.touched.home_airport && props.errors.home_airport && (
+                  <p className='error'>{props.errors.home_airport}</p>
+                )}
+              </Box>
+            </div>
 
             <Button type='submit'>Register</Button>
             <p>Already have an Account? <NavLink to='/connectionLog'>Click Here</NavLink></p>
@@ -109,16 +122,18 @@ const ConnectionReg = (props) => {
 };
 
 const CRegFormikForms = withFormik({
-  mapPropsToValues({ email, password}) {
+  mapPropsToValues({ email, password, home_airport}) {
     return {
       email: email || '',
-      password: password || ''
+      password: password || '',
+      home_airport: home_airport||''
     }
   },
 
   validationSchema: Yup.object().shape({
     email: Yup.string().required('email required'),
-    password: Yup.string().required('password required')
+    password: Yup.string().required('password required'),
+    home_airport: Yup.string().required("home airport needed")
 
   }),
 

@@ -79,9 +79,9 @@ const Dashboard = (props)=>{
                         <div className = "user">
                             {/* {console.log("full", user)} */}
                             <h1>Your Contact Info</h1>
-                            <h2>{user.name}</h2>
-                            <h4>{user.home_airport}</h4>
-                            <h4>{user.phone}</h4>
+                            <h2>Name: {user.name}</h2>
+                            <h4>Home airport: {user.home_airport}</h4>
+                            <h4>Phone: {user.phone}</h4>
                             
                             <Link to="/updateparent">Update</Link>
                         </div>
@@ -89,14 +89,14 @@ const Dashboard = (props)=>{
                             <h1>Your Flights</h1>
                             {/* {console.log("trips",trips)} */}
                             {trips.map((t)=>(
-                                <div>
-                                    <h2>{t.airline}</h2>
-                                    <h4>{t.airport_name}</h4>
-                                    <h4>{t.departure_time}</h4>
-                                    <h4>{t.flight_number}</h4>
-                                    <h4>{t.number_of_children}</h4>
-                                    <h4>{t.number_of_items}</h4>
-                                    <h4>{t.special}</h4>
+                                <div className="Trip">
+                                    <h2>Airline: {t.airline}</h2>
+                                    <h4>Airport name: {t.airport_name}</h4>
+                                    <h4>Departure time: {t.departure_time}</h4>
+                                    <h4>Flight number: {t.flight_number}</h4>
+                                    <h4>Number of children: {t.number_of_children}</h4>
+                                    <h4>Number of items: {t.number_of_items}</h4>
+                                    <h4>Special requests: {t.special}</h4>
                                     <button onClick={()=>removeTrip(t.id)}>Delete</button>
                                     <button onClick={()=>editTheTrip(t)}>Edit Trip</button>
                                 </div>

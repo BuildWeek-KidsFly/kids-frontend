@@ -71,6 +71,18 @@ a{
     display: flex;
     justify-content: space-evenly;
   }
+  .dashboard{
+    display: flex;
+    flex-direction: column;
+  }
+  .user{
+    margin: 0 auto;
+    width: 100%;
+  }
+  .trips{
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 .dashboard{
@@ -81,14 +93,19 @@ a{
 
 .user{
   width: 30%;
-  border: 1px solid black;
+  
   text-align: center;
   
 }
 
 .trips{
   width: 60%;
-  border: 1px solid black;
+  
+}
+
+.Trip{
+  border: 1px solid grey;
+  margin: 1% 0;
 }
 
 /* .linkStyle {
