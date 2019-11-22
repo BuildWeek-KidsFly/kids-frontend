@@ -47,7 +47,7 @@ const ConnectionDashboard = ()=>{
 
         return(
             <div>
-                <h1>Welcome customer, to the Connection dashboard</h1>
+                <h1>Welcome Customer, to the Connection Dashboard</h1>
                 <div className="dashboard">
                     <div className = "user">
                         <h2>{user.name}</h2>
@@ -58,7 +58,7 @@ const ConnectionDashboard = ()=>{
                         {
                             !trips.length > 0 ?
                             <div>
-                                <h1>Looks like there haven't been a trips assigned to your area, be sure to log back in later and check</h1>
+                                <h1>Looks like there haven't been any trips assigned to your area. Be sure to log back in later and check.</h1>
                                 
                             </div>
                             

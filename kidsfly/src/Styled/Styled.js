@@ -37,3 +37,28 @@ display: flex;
 justify-content: center;
 padding-top: 80px;
 `;
+
+export const EditStyle = styled.div`
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: flex-end;
+
+`;
+
+export const UpdateStyle = styled.div`
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: flex-end;
+
+`;
+
+export const UpdateStyleChild = styled.div`
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 0 auto;
+
+`;

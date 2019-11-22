@@ -27,6 +27,7 @@ const NavBar = (props) => {
         cursor: pointer;
         box-shadow: 3px 3px 3px black;
     }
+    
     @media (max-width: 500px) {
         height: 40px;
         width: 110px;

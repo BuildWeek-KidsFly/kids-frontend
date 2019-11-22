@@ -1,6 +1,7 @@
 import React from 'react';
 import {TripContext} from "../Context/TripContext";
 import axiosWithAuth from "../Utils/Axios";
+import {Container, Card, Button, UpdateStyle, UpdateStyleChild} from "../Styled/Styled"
 
 const UpdateParent =(props)=>{
 
@@ -37,30 +38,39 @@ const UpdateParent =(props)=>{
     }
 
     return(
-        <form>
-            <h2>Type into any of the fields to update your account</h2>
-            <div>
-                <label>Name</label>
-                <input type="text" name="name" value={user.name} onChange={handleChange}/>
-            </div>
-            <div>
-                <label>Phone</label>
-                <input type="text" name="phone" value={user.phone} onChange={handleChange}/>
-            </div>
-            <div>
-                <label>Address</label>
-                <input type="text" name="address" value={user.address} onChange={handleChange}/>
-            </div>
-            <div>
-                <label>Email</label>
-                <input type="text" name="email" value={user.email} onChange={handleChange}/>
-            </div>
-            <div>
-                <label>Home Airport</label>
-                <input type="text" name="home_airport" value={user.home_airport} onChange={handleChange}/>
-            </div>
-            <button onClick={handleSub}>Update</button>
-        </form>
+        <Container>
+            <Card>
+                <UpdateStyle>
+                    <h2>Update Any Information Below</h2>
+                    <UpdateStyleChild>  
+                    <div>
+                        <label>Name: </label>
+                        <input type="text" name="name" value={user.name} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label>Phone: </label>
+                        <input type="text" name="phone" value={user.phone} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label>Address: </label>
+                        <input type="text" name="address" value={user.address} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label>Email: </label>
+                        <input type="text" name="email" value={user.email} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label>Home Airport: </label>
+                        <input type="text" name="home_airport" value={user.home_airport} onChange={handleChange}/>
+                    </div>
+                    </UpdateStyleChild>
+                </UpdateStyle>
+                <Button onClick={handleSub}>Update</Button>
+            </Card> 
+        </Container>
+
+        
+        
     );
 }
 
