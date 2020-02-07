@@ -2,81 +2,149 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components';
 
 
-const ParentReg = ({ errors, touched, values, status }) => {
+const Container = styled.div`
+display: flex;
+justify-content: center;
+padding-top: 60px;
+`;
+
+const Background = styled.div`
+background: url('https://images.unsplash.com/photo-1572198404182-2c115d89fb26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+height: 100vh;
+`;
+
+
+const Card = styled.div`
+background: #091d86;
+width: 400px;
+max-height: 400px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 80px;
+box-shadow: 5px 5px black ;
+border: 2px solid #999999;
+color: #ffcc00;
+`;
+
+const Box = styled.div`
+  padding-left: 2px;
+
+`;
+
+const Button = styled.button`
+ border: 2px solid black;
+  background-color: #ffcc00;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  :hover {
+            background: #5963DD;
+            cursor: pointer;
+            box-shadow: 3px 3px 3px black;
+        }
+
+
+`;
+
+
+
+const ParentReg = (props) => {
+
+
 
   const [travelers, setTravelers] = useState({ email: '', password: '', home_airport: '' });
 
   return (
-    <div>
-      <h1>KidsFly Parent Registration</h1>
-      <Form>
-        <Field
-          type='text'
-          name='email'
-          placeholder='Email'
-        />
-        {touched.name && errors.email && (
-          <p className='error'>{errors.email}</p>
-        )}
+    <Background>
+      <Container>
+        <Card>
 
-        <Field
-          type='password'
-          name='password'
-          placeholder='Password'
-        />
-        {touched.name && errors.password && (
-          <p className='error'>{errors.password}</p>
-        )}
+          <Form>
+            {!props.status ? <h1>Parent Registration</h1> : <h1>Authenticating...</h1>}
+            <div>
+              <label htmlFor="email">Email</label>
+              <Box>
+                <Field
+                  type='text'
+                  name='email'
+                  placeholder='Email'
+                />
+                {props.touched.name && props.errors.email && (
+                  <p className='error'>{props.errors.email}</p>
+                )}
+              </Box>
+            </div>
+            <div>
+              <label htmlFor="password">Password</label>
+              <Box>
+                <Field
+                  type='password'
+                  name='password'
+                  placeholder='Password'
+                />
+                {props.touched.name && props.errors.password && (
+                  <p className='error'>{props.errors.password}</p>
+                )}
+              </Box>
+            </div>
 
-        <Field
-          type='text'
-          name='home_airport'
-          placeholder='Home Airport'
-        />
-        {touched.name && errors.home_airport && (
-          <p className='error'>{errors.home_airport}</p>
-        )}
+            <Button type='submit'>Register</Button>
+            <p>Already have an Account? <NavLink to='/login'>Click Here</NavLink></p>
+          </Form>
 
-        <button type='submit'>Submit</button>
-      </Form>
-
-    </div>
+        </Card>
+      </Container>
+    </Background>
   );
 };
-const FormikForms = withFormik({
+const PRegFormikForms = withFormik({
   mapPropsToValues({ email, password, home_airport }) {
     return {
       email: email || '',
-      password: password || '',
-      home_airport: home_airport || ''
+      password: password || ''
     }
   },
 
   validationSchema: Yup.object().shape({
     email: Yup.string().required('email required'),
     password: Yup.string().required('password required'),
-    home_airport: Yup.string().required('airport required')
+
 
 
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, { setStatus, props }) {
+
     console.log(values)
+    setStatus(true);
     axios.post('https://kidsfly-be-dakotah.herokuapp.com/api/auth/register', values)
-      .then(response => {
-
-        console.log(response)
+      .then(res => {
+        localStorage.setItem("token", res.data.token)
+        setStatus(false);
+        console.log(res)
+        props.YEET(res.data.id);
+        props.history.push("/login")
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        setStatus(false);
+      })
   }
-
-
-
 
 })(ParentReg)
 
 
-export default FormikForms;
+export default PRegFormikForms;

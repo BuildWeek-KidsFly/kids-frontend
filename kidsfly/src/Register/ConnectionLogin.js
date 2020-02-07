@@ -1,20 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from 'styled-components';
 
-
 const Container = styled.div`
 display: flex;
 justify-content: center;
 padding-top: 80px;
-
-@media (max-width: 800px){
-  width: 100%;
-  margin: 0;
-
-}
 `;
 
 const Background = styled.div`
@@ -24,7 +17,6 @@ background: url('https://images.unsplash.com/photo-1572198404182-2c115d89fb26?ix
         -o-background-size: cover;
         background-size: cover;
 height: 100vh;
-
 `;
 
 const Card = styled.div`
@@ -64,36 +56,37 @@ const Button = styled.button`
 `;
 
 
-const Login = (props) => {
 
+
+const ConnectionLogin = (props) => {
   // const Login = ({ errors, touched, values }) => {
   const [user, setUser] = useState({ email: "", password: "" });
 
 
+  console.log("connection log")
   return (
     <Background>
       <Container>
-
         <Card>
           <div className="login-form">
             <Form onSubmit={props.handleSubmit}>
-              {!props.status ? <h1>Parent Login</h1> : <h1>Authenticating...</h1>}
-
-              <label htmlFor="email">Email</label>
-              <Box>
-                <Field type="text" name="email" placeholder="Email" />
-                {props.touched.username && props.errors.username && (
-                  <p className="errors">{props.errors.username}</p>
-                )}
-              </Box>
-
-              <label htmlFor="password">Password</label>
-              <Box>
-                <Field type="password" name="password" placeholder="Password" />
-                {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
-              </Box>
-
-
+              {!props.status ? <h1>Connection Login </h1> : <h1>Authenticating...</h1>}
+              <div>
+                <label htmlFor="email">Email:</label>
+                <Box>
+                  <Field type="text" name="email" placeholder="Email" />
+                  {props.touched.username && props.errors.username && (
+                    <p className="errors">{props.errors.username}</p>
+                  )}
+                </Box>
+              </div>
+              <div>
+                <label htmlFor="password">Password:</label>
+                <Box>
+                  <Field type="password" name="password" placeholder="Password" />
+                  {props.touched.password && props.errors.password && <p className="errors">{props.errors.password}</p>}
+                </Box>
+              </div>
               <Button type="submit">Login</Button>
             </Form>
           </div>
@@ -103,7 +96,7 @@ const Login = (props) => {
   );
 };
 
-const FormikLogin = withFormik({
+const ConnectionFormikLogin = withFormik({
 
   mapPropsToValues({ email, password }) {
     return {
@@ -116,33 +109,31 @@ const FormikLogin = withFormik({
     password: Yup.string().required()
   }),
 
-
-
   handleSubmit(values, { setStatus, props }) {
+    //replace below with 'connection' endpoint
 
-    // console.log("from formik", values)
-    // console.log("Formik props", props)
-
+    console.log("from formik", values)
+    console.log("Formik props", props)
 
     setStatus(true);
     axios
-      .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/login", values)
+      .post("https://kidsfly-be-dakotah.herokuapp.com/api/auth/connections/login", values)
       .then(res => {
-        // setStatus(res.data);
-        // console.log(res);
+        setStatus(res.data);
+        console.log(res);
         localStorage.setItem("token", res.data.token)
         setStatus(false);
         props.YEET(res.data.id)
-        props.history.push("/dashboard")
+        props.history.push("/connectdashboard")
       })
       .catch((err) => {
         console.log(err.response)
         setStatus(false)
       })
       .finally(() => {
-        // console.log('From Local Storage', localStorage.getItem("token"))
+        console.log('From Local Storage', localStorage.getItem("token"))
       })
   }
-})(Login);
+})(ConnectionLogin);
 
-export default FormikLogin;
+export default ConnectionFormikLogin;
